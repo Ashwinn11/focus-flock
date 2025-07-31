@@ -11,6 +11,8 @@ out/
 build/
 dist/
 
+.cursor/mcp.json
+
 # Environment variables
 .env
 .env.local
