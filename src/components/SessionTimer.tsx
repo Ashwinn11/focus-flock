@@ -67,6 +67,15 @@ const SessionTimer: React.FC<SessionTimerProps> = ({
   const isLowTime = timeRemaining <= 300; // Last 5 minutes
   const isVeryLowTime = timeRemaining <= 60; // Last minute
 
+  const getProgressBarColor = () => {
+    switch (currentPhase) {
+      case 'focus': return 'bg-community-teal';
+      case 'settling': return 'bg-focus-purple';
+      case 'break': return 'bg-flock-coral';
+      default: return 'bg-dopamine-yellow';
+    }
+  };
+
   return (
     <div className={clsx('text-center space-y-4', className)}>
       {/* Phase Indicator */}
@@ -111,13 +120,7 @@ const SessionTimer: React.FC<SessionTimerProps> = ({
       {/* Progress Indicator */}
       <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
         <motion.div
-          className={clsx(
-            'h-full rounded-full',
-            currentPhase === 'focus' ? 'bg-community-teal' :
-            currentPhase === 'settling' ? 'bg-focus-purple' :
-            currentPhase === 'break' ? 'bg-flock-coral' :
-            'bg-dopamine-yellow'
-          )}
+          className={clsx('h-full rounded-full', getProgressBarColor())}
           initial={false}
           animate={{ 
             width: `${((totalDuration - timeRemaining) / totalDuration) * 100}%` 
