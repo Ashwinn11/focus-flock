@@ -88,7 +88,7 @@ const EnergySelector: React.FC<EnergySelectorProps> = ({
             {/* Energy Icon */}
             <motion.div
               className="text-5xl mb-4"
-              initial={{ scale: 0.8, opacity: 0 }}
+              initial={false}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.1 }}
             >
@@ -109,7 +109,7 @@ const EnergySelector: React.FC<EnergySelectorProps> = ({
             {selectedEnergy === option.level && (
               <motion.div
                 className="absolute top-4 right-4 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md"
-                initial={{ scale: 0 }}
+                initial={false}
                 animate={{ scale: 1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 20 }}
               >
@@ -126,7 +126,7 @@ const EnergySelector: React.FC<EnergySelectorProps> = ({
       <motion.div
         className="mt-8 p-6 rounded-xl text-center"
         style={{ background: 'var(--soft-lavender)' }}
-        initial={{ opacity: 0, y: 10 }}
+        initial={false}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
       >

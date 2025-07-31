@@ -58,7 +58,7 @@ const CreateSessionPage: React.FC = () => {
         {/* Header */}
         <motion.div
           className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
@@ -73,7 +73,7 @@ const CreateSessionPage: React.FC = () => {
 
         {/* Session Creator */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
@@ -86,7 +86,7 @@ const CreateSessionPage: React.FC = () => {
         {/* Tips Section */}
         <motion.div
           className="mt-16 max-w-4xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >

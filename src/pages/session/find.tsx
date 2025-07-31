@@ -68,7 +68,7 @@ const FindSessionPage: React.FC = () => {
             {/* Header */}
             <motion.div
               className="text-center mb-12"
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
@@ -83,7 +83,7 @@ const FindSessionPage: React.FC = () => {
             {/* Energy Selection */}
             <motion.div
               className="max-w-4xl mx-auto mb-12"
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
@@ -98,7 +98,7 @@ const FindSessionPage: React.FC = () => {
             {/* Session Type Preference (Optional) */}
             <motion.div
               className="max-w-4xl mx-auto mb-12"
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
@@ -139,7 +139,7 @@ const FindSessionPage: React.FC = () => {
                 {preferredSessionType && (
                   <motion.div
                     className="mt-4 text-center"
-                    initial={{ opacity: 0, scale: 0.8 }}
+                    initial={false}
                     animate={{ opacity: 1, scale: 1 }}
                   >
                     <button
@@ -156,7 +156,7 @@ const FindSessionPage: React.FC = () => {
             {/* Continue Button */}
             <motion.div
               className="text-center"
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
