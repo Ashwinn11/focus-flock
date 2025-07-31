@@ -324,6 +324,7 @@ const HomePage: React.FC = () => {
         </div>
       </footer>
     </div>
+    </div>
     </>
   );
 };
