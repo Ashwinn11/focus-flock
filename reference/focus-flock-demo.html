@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="default" data-contrast="normal" data-text-size="normal" data-motion="normal" data-focus="normal">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Flock Design System Demo</title>
+    <link rel="stylesheet" href="focus-flock-design-system.css">
+    <link rel="stylesheet" href="focus-flock-components.css">
+    <link rel="stylesheet" href="focus-flock-layouts.css">
+    <link rel="stylesheet" href="focus-flock-customization.css">
+    <link rel="stylesheet" href="focus-flock-animations.css">
+    <style>
+        /* Demo-specific styles */
+        .demo-section {
+            margin-bottom: var(--space-16);
+            padding: var(--space-6);
+            background: white;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-sm);
+        }
+        .demo-grid {
+            display: grid;
+            gap: var(--space-4);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+        .component-preview {
+            padding: var(--space-4);
+            background: var(--neutral-50);
+            border-radius: var(--radius-lg);
+            border: 1px dashed var(--neutral-300);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="container">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <div class="avatar avatar-lg themed-primary">
+                            🦆
+                        </div>
+                        <div>
+                            <h1 class="text-h2 mb-0">Focus Flock</h1>
+                            <p class="text-small text-neutral-500 mb-0">Design System Demo</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">
+                        🎨 Customize
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="app-main">
+            <div class="container">
+                <!-- Hero Section -->
+                <section class="page-hero mb-8">
+                    <h1 class="page-title">ADHD-Friendly Design System</h1>
+                    <p class="page-subtitle">Dopamine-driven • Community-focused • TikTok-ready</p>
+                    <div class="flex gap-4 justify-center mt-6">
+                        <button class="btn btn-celebration animate-pulse-glow">
+                            ✨ Start Session
+                        </button>
+                        <button class="btn btn-teal">
+                            👥 Find Your Flock
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Button System Demo -->
+                <section class="demo-section">
+                    <h2 class="text-h1 mb-6">Button System</h2>
+                    <div class="demo-grid">
+                        <div class="component-preview">
+                            <h3 class="text-h3 mb-4">Primary Actions</h3>
+                            <div class="flex flex-col gap-4">
+                                <button class="btn btn-primary">Focus Purple</button>
+                                <button class="btn btn-coral">Flock Coral</button>
+                                <button class="btn btn-teal">Community Teal</button>
+                                <button class="btn btn-celebration">🎉 Celebration</button>
+                            </div>
+                        </div>
+                        <div class="component-preview">
+                            <h3 class="text-h3 mb-4">Secondary Actions</h3>
+                            <div class="flex flex-col gap-4">
+                                <button class="btn btn-secondary">Secondary</button>
+                                <button class="btn btn-primary btn-sm">Small Button</button>
+                                <button class="btn btn-coral btn-lg">Large Button</button>
+                                <button class="btn btn-primary" disabled>Disabled</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Session Interface Demo -->
+                <section class="demo-section">
+                    <h2 class="text-h1 mb-6">Session Interface</h2>
+                    <div class="session-layout">
+                        <div class="session-participants">
+                            <h3 class="text-h2 mb-4">Active Participants</h3>
+                            <div class="participants-grid">
+                                <div class="participant-card speaking">
+                                    <div class="avatar avatar-lg mb-3">🦆</div>
+                                    <h4 class="text-h3 mb-1">You</h4>
+                                    <div class="energy-indicator energy-high">
+                                        ⚡ High Energy
+                                    </div>
+                                </div>
+                                <div class="participant-card">
+                                    <div class="avatar avatar-lg mb-3 avatar-online">🐝</div>
+                                    <h4 class="text-h3 mb-1">Alex</h4>
+                                    <div class="energy-indicator energy-medium">
+                                        🌊 Steady Flow
+                                    </div>
+                                </div>
+                                <div class="participant-card">
+                                    <div class="avatar avatar-lg mb-3 avatar-online">🦋</div>
+                                    <h4 class="text-h3 mb-1">Sam</h4>
+                                    <div class="energy-indicator energy-low">
+                                        🌙 Gentle Pace
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="session-timer">
+                            <div class="text-display mb-4">25:00</div>
+                            <p class="text-h3 mb-6">Deep Work Session</p>
+                            <div class="progress-container mb-6">
+                                <div class="progress-bar progress-focus animate-progress-grow" style="--target-width: 40%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="session-controls">
+                            <button class="btn btn-coral">⏸️ Pause</button>
+                            <button class="btn btn-secondary">💬 Chat</button>
+                            <button class="btn btn-teal">🎵 Sounds</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Energy Matching Demo -->
+                <section class="demo-section">
+                    <h2 class="text-h1 mb-6">Energy Matching</h2>
+                    <div class="matching-layout">
+                        <div class="energy-selector">
+                            <h3 class="text-h2 mb-4">How's your energy today?</h3>
+                            <div class="energy-options">
+                                <div class="energy-option selected energy-high">
+                                    <div class="text-h1 mb-2">⚡</div>
+                                    <div class="text-h3">High Energy</div>
+                                    <div class="text-small">Ready to tackle big tasks</div>
+                                </div>
+                                <div class="energy-option energy-medium">
+                                    <div class="text-h1 mb-2">🌊</div>
+                                    <div class="text-h3">Steady Flow</div>
+                                    <div class="text-small">Consistent focused work</div>
+                                </div>
+                                <div class="energy-option energy-low">
+                                    <div class="text-h1 mb-2">🌙</div>
+                                    <div class="text-h3">Gentle Pace</div>
+                                    <div class="text-small">Easy, manageable tasks</div>
+                                </div>
+                                <div class="energy-option energy-recharge">
+                                    <div class="text-h1 mb-2">🔋</div>
+                                    <div class="text-h3">Recharge</div>
+                                    <div class="text-small">Rest and self-care</div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-celebration btn-lg">
+                            🎯 Find My Flock
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Progress Garden Demo -->
+                <section class="demo-section">
+                    <h2 class="text-h1 mb-6">Progress Garden</h2>
+                    <div class="progress-garden">
+                        <div class="garden-seed">🌱</div>
+                        <div class="garden-sprout animate-garden-bloom">🌿</div>
+                        <div class="garden-bloom animate-bounce-gentle">🌸</div>
+                        <div class="garden-bloom animate-bounce-gentle">🌺</div>
+                        <div class="garden-bloom animate-bounce-gentle">🌻</div>
+                        <div class="garden-seed">🌱</div>
+                        <div class="garden-seed">🌱</div>
+                        <div class="garden-sprout">🌿</div>
+                        <div class="garden-bloom animate-bounce-gentle">🌷</div>
+                        <div class="garden-seed">🌱</div>
+                    </div>
+                    <div class="mt-6 text-center">
+                        <h3 class="text-h2 mb-2">7-day streak! 🎉</h3>
+                        <p class="text-body text-neutral-600">Your focus garden is blooming beautifully</p>
+                    </div>
+                </section>
+
+                <!-- Community Feed Demo -->
+                <section class="demo-section">
+                    <h2 class="text-h1 mb-6">Community Feed</h2>
+                    <div class="feed-filters mb-6">
+                        <button class="filter-pill active">All Updates</button>
+                        <button class="filter-pill">Celebrations</button>
+                        <button class="filter-pill">Goals</button>
+                        <button class="filter-pill">Support</button>
+                        <button class="filter-pill">Wins</button>
+                    </div>
+                    <div class="feed-layout">
+                        <div>
+                            <article class="feed-item animate-fade-in">
+                                <div class="feed-header">
+                                    <div class="avatar">🦆</div>
+                                    <div>
+                                        <h4 class="text-body font-semibold">Riley</h4>
+                                        <p class="text-small text-neutral-500">2 hours ago</p>
+                                    </div>
+                                    <div class="energy-indicator energy-high ml-auto">
+                                        ⚡ High Energy
+                                    </div>
+                                </div>
+                                <div class="feed-content">
+                                    Just finished a 2-hour deep work session! My brain was firing on all cylinders today ⚡ Managed to clear my entire inbox and start that project I've been procrastinating on 🎉
+                                </div>
+                                <div class="feed-actions">
+                                    <div class="feed-action">
+                                        <span>❤️</span>
+                                        <span>12</span>
+                                    </div>
+                                    <div class="feed-action">
+                                        <span>💬</span>
+                                        <span>3</span>
+                                    </div>
+                                    <div class="feed-action">
+                                        <span>🎉</span>
+                                        <span>Celebrate</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="feed-item animate-fade-in">
+                                <div class="feed-header">
+                                    <div class="avatar">🐝</div>
+                                    <div>
+                                        <h4 class="text-body font-semibold">Alex</h4>
+                                        <p class="text-small text-neutral-500">4 hours ago</p>
+                                    </div>
+                                    <div class="energy-indicator energy-medium ml-auto">
+                                        🌊 Steady Flow
+                                    </div>
+                                </div>
+                                <div class="feed-content">
+                                    Struggling with focus today but did manage to do 15 minutes of organizing. Sometimes that's enough! 💙
+                                </div>
+                                <div class="feed-actions">
+                                    <div class="feed-action">
+                                        <span>❤️</span>
+                                        <span>8</span>
+                                    </div>
+                                    <div class="feed-action">
+                                        <span>💬</span>
+                                        <span>5</span>
+                                    </div>
+                                    <div class="feed-action">
+                                        <span>🤗</span>
+                                        <span>Support</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Celebration Card Demo -->
+                <section class="demo-section">
+                    <h2 class="text-h1 mb-6">Celebration System</h2>
+                    <div class="celebration-card animate-celebration-burst mb-6">
+                        <div class="celebration-title">Week Complete! 🎉</div>
+                        <div class="celebration-subtitle">7 focused sessions this week</div>
+                        <p class="text-body mb-4">You're building incredible momentum!</p>
+                        <button class="btn btn-secondary">Share Achievement</button>
+                    </div>
+                    
+                    <div class="demo-grid">
+                        <div class="component-preview">
+                            <h3 class="text-h3 mb-4">Achievement Badges</h3>
+                            <div class="flex gap-3 flex-wrap">
+                                <div class="sparkle-container">
+                                    <div class="avatar themed-celebration">🔥</div>
+                                </div>
+                                <div class="sparkle-container">
+                                    <div class="avatar themed-celebration">⭐</div>
+                                </div>
+                                <div class="avatar themed-primary">🎯</div>
+                                <div class="avatar themed-secondary">💎</div>
+                            </div>
+                        </div>
+                        <div class="component-preview">
+                            <h3 class="text-h3 mb-4">Milestones</h3>
+                            <div class="flex flex-col gap-3">
+                                <div class="flex items-center gap-3">
+                                    <div class="avatar avatar-sm themed-celebration animate-milestone-glow">🎊</div>
+                                    <span class="text-body">First Week Complete</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="avatar avatar-sm themed-primary">⚡</div>
+                                    <span class="text-body">Focus Streak Master</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="avatar avatar-sm themed-secondary">🌱</div>
+                                    <span class="text-body">Garden Grower</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Form Components Demo -->
+                <section class="demo-section">
+                    <h2 class="text-h1 mb-6">Form Components</h2>
+                    <div class="demo-grid">
+                        <div class="component-preview">
+                            <h3 class="text-h3 mb-4">Input Fields</h3>
+                            <div class="input-group">
+                                <label class="input-label">Focus Goal</label>
+                                <input type="text" class="input-field" placeholder="What do you want to focus on today?">
+                            </div>
+                            <div class="input-group">
+                                <label class="input-label">Session Duration</label>
+                                <input type="number" class="input-field" placeholder="25">
+                            </div>
+                        </div>
+                        <div class="component-preview">
+                            <h3 class="text-h3 mb-4">Toggle Switches</h3>
+                            <div class="flex flex-col gap-4">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-body">Camera On</span>
+                                    <label class="toggle">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-body">Background Sounds</span>
+                                    <label class="toggle">
+                                        <input type="checkbox">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-body">Notifications</span>
+                                    <label class="toggle">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Loading States Demo -->
+                <section class="demo-section">
+                    <h2 class="text-h1 mb-6">Loading States</h2>
+                    <div class="demo-grid">
+                        <div class="component-preview">
+                            <h3 class="text-h3 mb-4">Skeleton Loading</h3>
+                            <div class="card">
+                                <div class="skeleton mb-3" style="height: 60px; width: 60px; border-radius: 50%;"></div>
+                                <div class="skeleton mb-2" style="height: 20px; width: 70%;"></div>
+                                <div class="skeleton mb-2" style="height: 16px; width: 50%;"></div>
+                                <div class="skeleton" style="height: 40px; width: 100%;"></div>
+                            </div>
+                        </div>
+                        <div class="component-preview">
+                            <h3 class="text-h3 mb-4">Loading Spinner</h3>
+                            <div class="flex justify-center">
+                                <div class="loading-spinner"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="#" class="nav-item active">
+                <div class="nav-icon">🏠</div>
+                <span>Home</span>
+            </a>
+            <a href="#" class="nav-item">
+                <div class="nav-icon">🎯</div>
+                <span>Focus</span>
+            </a>
+            <a href="#" class="nav-item">
+                <div class="nav-icon">👥</div>
+                <span>Community</span>
+            </a>
+            <a href="#" class="nav-item">
+                <div class="nav-icon">📊</div>
+                <span>Progress</span>
+            </a>
+            <a href="#" class="nav-item">
+                <div class="nav-icon">⚙️</div>
+                <span>Settings</span>
+            </a>
+        </nav>
+
+        <!-- Floating Action Button -->
+        <button class="fab animate-float">
+            ➕
+        </button>
+
+        <!-- Notification Example -->
+        <div class="notification notification-celebration animate-notification-slide-in">
+            <h4 class="text-body font-semibold mb-2">🎉 Achievement Unlocked!</h4>
+            <p class="text-small mb-0">You completed your first week of focus sessions!</p>
+        </div>
+    </div>
+
+    <!-- Customization Panel -->
+    <div class="customization-panel" style="display: none;">
+        <h3 class="text-h2 mb-4">Customize Your Experience</h3>
+        
+        <div class="mb-6">
+            <h4 class="text-h3 mb-3">Choose Your Theme</h4>
+            <div class="theme-selector">
+                <div class="theme-option sunset" data-theme="sunset"></div>
+                <div class="theme-option ocean" data-theme="ocean"></div>
+                <div class="theme-option forest" data-theme="forest"></div>
+                <div class="theme-option midnight" data-theme="midnight"></div>
+                <div class="theme-option bubblegum" data-theme="bubblegum"></div>
+                <div class="theme-option minimalist" data-theme="minimalist"></div>
+            </div>
+        </div>
+
+        <div class="accessibility-panel">
+            <h4 class="text-h3 mb-4">Accessibility Options</h4>
+            <div class="accessibility-option">
+                <div>
+                    <div class="accessibility-label">Large Text</div>
+                    <div class="accessibility-description">Increase text size for better readability</div>
+                </div>
+                <label class="toggle">
+                    <input type="checkbox">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            <div class="accessibility-option">
+                <div>
+                    <div class="accessibility-label">High Contrast</div>
+                    <div class="accessibility-description">Increase contrast for better visibility</div>
+                </div>
+                <label class="toggle">
+                    <input type="checkbox">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            <div class="accessibility-option">
+                <div>
+                    <div class="accessibility-label">Reduce Motion</div>
+                    <div class="accessibility-description">Minimize animations and transitions</div>
+                </div>
+                <label class="toggle">
+                    <input type="checkbox">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Demo interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme switching
+            const themeOptions = document.querySelectorAll('.theme-option');
+            themeOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const theme = this.dataset.theme;
+                    document.documentElement.setAttribute('data-theme', theme);
+                    
+                    // Update selected state
+                    themeOptions.forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                });
+            });
+
+            // Button animations
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    this.classList.add('animate-button-press');
+                    setTimeout(() => {
+                        this.classList.remove('animate-button-press');
+                    }, 150);
+                });
+            });
+
+            // Energy option selection
+            const energyOptions = document.querySelectorAll('.energy-option');
+            energyOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    energyOptions.forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                    this.classList.add('animate-gentle-pop');
+                    setTimeout(() => {
+                        this.classList.remove('animate-gentle-pop');
+                    }, 300);
+                });
+            });
+
+            // Celebration trigger
+            const celebrationBtn = document.querySelector('.btn-celebration');
+            if (celebrationBtn) {
+                celebrationBtn.addEventListener('click', function() {
+                    this.classList.add('animate-dopamine-hit');
+                    setTimeout(() => {
+                        this.classList.remove('animate-dopamine-hit');
+                    }, 600);
+                });
+            }
+
+            // Garden interaction
+            const gardenSeeds = document.querySelectorAll('.garden-seed');
+            gardenSeeds.forEach(seed => {
+                seed.addEventListener('click', function() {
+                    this.classList.remove('garden-seed');
+                    this.classList.add('garden-sprout', 'animate-garden-bloom');
+                    this.textContent = '🌿';
+                });
+            });
+
+            // Avatar hover effects
+            const avatars = document.querySelectorAll('.avatar');
+            avatars.forEach(avatar => {
+                avatar.addEventListener('mouseenter', function() {
+                    this.classList.add('animate-wiggle');
+                });
+                avatar.addEventListener('animationend', function() {
+                    this.classList.remove('animate-wiggle');
+                });
+            });
+
+            // Hide notification after delay
+            setTimeout(() => {
+                const notification = document.querySelector('.notification');
+                if (notification) {
+                    notification.style.animation = 'slide-out-top 0.3s ease-out forwards';
+                    setTimeout(() => {
+                        notification.style.display = 'none';
+                    }, 300);
+                }
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

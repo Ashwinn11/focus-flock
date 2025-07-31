@@ -1,0 +1,290 @@
+/* Focus Flock Design Tokens */
+/* Productivity that doesn't suck */
+
+:root {
+  /* Brand Colors */
+  --focus-purple: #8B5FBF;
+  --flock-coral: #FF6B7A;
+  --community-teal: #4ECDC4;
+  --dopamine-yellow: #FFD93D;
+
+  /* Supporting Brand Colors */
+  --soft-lavender: #E6D9F5;
+  --warm-peach: #FFF2F0;
+  --mint-cream: #F0FFFE;
+  --sunshine: #FFF8E1;
+
+  /* Functional Colors */
+  --success: #4ECDC4;
+  --warning: #FFD93D;
+  --error: #FF6B7A;
+  --info: #8B5FBF;
+
+  /* Neutral Palette */
+  --charcoal: #2D3748;
+  --slate: #4A5568;
+  --cloud: #A0AEC0;
+  --whisper: #F7FAFC;
+  --snow: #FFFFFF;
+
+  /* Semantic Color Tokens */
+  --text-primary: var(--charcoal);
+  --text-secondary: var(--slate);
+  --text-tertiary: var(--cloud);
+  --text-inverse: var(--snow);
+
+  --bg-primary: var(--snow);
+  --bg-secondary: var(--whisper);
+  --bg-tertiary: var(--soft-lavender);
+
+  --border-subtle: var(--whisper);
+  --border-default: var(--cloud);
+  --border-emphasis: var(--slate);
+
+  /* Typography */
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Monaco, 'Cascadia Code', monospace;
+
+  /* Font Sizes */
+  --text-display: 3.5rem;    /* 56px */
+  --text-hero: 2.25rem;      /* 36px */
+  --text-h1: 1.875rem;       /* 30px */
+  --text-h2: 1.5rem;         /* 24px */
+  --text-h3: 1.25rem;        /* 20px */
+  --text-h4: 1.125rem;       /* 18px */
+  --text-large: 1.125rem;    /* 18px */
+  --text-body: 1rem;         /* 16px */
+  --text-small: 0.875rem;    /* 14px */
+  --text-caption: 0.75rem;   /* 12px */
+
+  /* Font Weights */
+  --font-light: 300;
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  /* Line Heights */
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+
+  /* Spacing Scale (8px base) */
+  --space-0: 0;
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+  --space-24: 6rem;     /* 96px */
+
+  /* Border Radius */
+  --radius-none: 0;
+  --radius-small: 0.5rem;     /* 8px */
+  --radius-medium: 1rem;      /* 16px */
+  --radius-large: 1.5rem;     /* 24px */
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-soft: 0 4px 20px rgba(139, 95, 191, 0.1);
+  --shadow-medium: 0 8px 30px rgba(139, 95, 191, 0.15);
+  --shadow-strong: 0 12px 40px rgba(139, 95, 191, 0.2);
+  --shadow-focus: 0 0 0 3px rgba(139, 95, 191, 0.2);
+
+  /* Z-Index Scale */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-toast: 1080;
+
+  /* Transitions */
+  --transition-fast: 150ms ease-out;
+  --transition-base: 200ms ease-out;
+  --transition-slow: 300ms ease-out;
+
+  /* Breakpoints */
+  --bp-sm: 640px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+  --bp-2xl: 1536px;
+
+  /* Component-Specific Tokens */
+  --button-height-sm: 2rem;     /* 32px */
+  --button-height-md: 2.5rem;   /* 40px */
+  --button-height-lg: 3rem;     /* 48px */
+
+  --input-height-sm: 2rem;      /* 32px */
+  --input-height-md: 2.5rem;    /* 40px */
+  --input-height-lg: 3rem;      /* 48px */
+
+  --header-height: 4rem;        /* 64px */
+  --sidebar-width: 16rem;       /* 256px */
+}
+
+/* Dark Mode Overrides */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-primary: var(--snow);
+    --text-secondary: var(--cloud);
+    --text-tertiary: var(--slate);
+    --text-inverse: var(--charcoal);
+
+    --bg-primary: var(--charcoal);
+    --bg-secondary: #1A202C;
+    --bg-tertiary: #2D3748;
+
+    --border-subtle: #2D3748;
+    --border-default: var(--slate);
+    --border-emphasis: var(--cloud);
+  }
+}
+
+/* Utility Classes */
+.brand-gradient {
+  background: linear-gradient(135deg, var(--focus-purple) 0%, var(--community-teal) 100%);
+}
+
+.celebration-gradient {
+  background: linear-gradient(135deg, var(--flock-coral) 0%, var(--dopamine-yellow) 100%);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--focus-purple) 0%, var(--community-teal) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Focus States */
+.focus-visible {
+  outline: 2px solid var(--focus-purple);
+  outline-offset: 2px;
+}
+
+/* Accessibility Helpers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Animation Curves */
+.ease-bounce {
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.ease-gentle {
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Brand Component Patterns */
+.flock-card {
+  background: var(--bg-primary);
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-soft);
+  padding: var(--space-6);
+  border: 1px solid var(--border-subtle);
+}
+
+.focus-button-primary {
+  background: var(--focus-purple);
+  color: var(--text-inverse);
+  border: none;
+  border-radius: var(--radius-small);
+  padding: var(--space-3) var(--space-6);
+  font-family: var(--font-body);
+  font-weight: var(--font-medium);
+  font-size: var(--text-body);
+  transition: all var(--transition-base);
+  cursor: pointer;
+}
+
+.focus-button-primary:hover {
+  background: #7A52A8;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-medium);
+}
+
+.focus-button-secondary {
+  background: transparent;
+  color: var(--focus-purple);
+  border: 2px solid var(--focus-purple);
+  border-radius: var(--radius-small);
+  padding: var(--space-3) var(--space-6);
+  font-family: var(--font-body);
+  font-weight: var(--font-medium);
+  font-size: var(--text-body);
+  transition: all var(--transition-base);
+  cursor: pointer;
+}
+
+.focus-button-secondary:hover {
+  background: var(--focus-purple);
+  color: var(--text-inverse);
+  transform: translateY(-1px);
+}
+
+.celebration-badge {
+  background: var(--dopamine-yellow);
+  color: var(--charcoal);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--text-small);
+  font-weight: var(--font-medium);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.community-pill {
+  background: var(--community-teal);
+  color: var(--text-inverse);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  font-size: var(--text-small);
+  font-weight: var(--font-medium);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Focus session status indicators */
+.status-active {
+  background: var(--community-teal);
+  color: var(--text-inverse);
+}
+
+.status-break {
+  background: var(--dopamine-yellow);
+  color: var(--charcoal);
+}
+
+.status-celebration {
+  background: var(--flock-coral);
+  color: var(--text-inverse);
+}
+
+.status-offline {
+  background: var(--cloud);
+  color: var(--text-secondary);
+}

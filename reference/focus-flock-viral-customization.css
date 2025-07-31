@@ -1,0 +1,754 @@
+/* Focus Flock Viral Customization System */
+/* Aesthetic features that users can't help but share */
+
+/* Avatar Creation System - Instagram-worthy customization */
+.avatar-creator {
+  background: var(--gradient-sunset);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-celebration);
+  position: relative;
+  overflow: hidden;
+}
+
+.avatar-creator::before {
+  content: '✨';
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  font-size: var(--text-h1);
+  animation: reward-sparkle 2s ease-in-out infinite;
+}
+
+.avatar-preview {
+  width: 120px;
+  height: 120px;
+  border-radius: var(--radius-full);
+  background: var(--gradient-celebration);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  margin: 0 auto var(--space-6);
+  box-shadow: var(--shadow-glow);
+  position: relative;
+  transition: all var(--duration-celebration) var(--ease-celebration);
+}
+
+.avatar-preview:hover {
+  transform: scale(1.05);
+  animation: rainbow-glow 3s linear infinite;
+}
+
+/* Mood-based Avatar Themes */
+.avatar-theme-selector {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.avatar-theme {
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-gentle);
+  border: 2px solid transparent;
+}
+
+.avatar-theme:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.avatar-theme.selected {
+  border-color: var(--focus-purple);
+  background: var(--focus-purple-10);
+  animation: gentle-pop var(--duration-normal) var(--ease-gentle);
+}
+
+.avatar-theme-energetic {
+  background: linear-gradient(135deg, var(--dopamine-yellow-10), var(--flock-coral-10));
+}
+
+.avatar-theme-calm {
+  background: linear-gradient(135deg, var(--community-teal-10), var(--focus-purple-10));
+}
+
+.avatar-theme-focused {
+  background: linear-gradient(135deg, var(--focus-purple-10), var(--neutral-100));
+}
+
+.avatar-theme-creative {
+  background: linear-gradient(135deg, var(--flock-coral-10), var(--dopamine-yellow-10));
+}
+
+.avatar-theme-balanced {
+  background: linear-gradient(135deg, var(--community-teal-10), var(--success-bg));
+}
+
+.avatar-theme-cozy {
+  background: linear-gradient(135deg, #FFF8E1, #FFF2F0);
+}
+
+/* Avatar Accessories */
+.avatar-accessories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: center;
+  margin-bottom: var(--space-6);
+}
+
+.avatar-accessory {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all var(--duration-fast) var(--ease-gentle);
+  background: var(--neutral-100);
+}
+
+.avatar-accessory:hover {
+  background: var(--focus-purple-10);
+  transform: scale(1.1);
+}
+
+.avatar-accessory.selected {
+  border-color: var(--focus-purple);
+  background: var(--focus-purple-20);
+  animation: pulse-glow 1s ease-in-out;
+}
+
+/* Virtual Study Space Customization */
+.study-space-creator {
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-lg);
+  margin-bottom: var(--space-8);
+}
+
+.study-space-preview {
+  aspect-ratio: 16/9;
+  border-radius: var(--radius-lg);
+  background: var(--gradient-ocean);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: var(--space-6);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-gentle);
+}
+
+.study-space-preview:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-celebration);
+}
+
+.study-space-elements {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.space-element {
+  position: absolute;
+  font-size: 1.5rem;
+  animation: float 4s ease-in-out infinite;
+}
+
+.space-element:nth-child(2) { animation-delay: -1s; }
+.space-element:nth-child(3) { animation-delay: -2s; }
+.space-element:nth-child(4) { animation-delay: -3s; }
+
+/* Study Space Themes */
+.space-theme-selector {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.space-theme {
+  aspect-ratio: 1;
+  border-radius: var(--radius-lg);
+  padding: var(--space-3);
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all var(--duration-normal) var(--ease-gentle);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.space-theme:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.space-theme.selected {
+  border-color: var(--focus-purple);
+  animation: celebration-pop var(--duration-celebration) var(--ease-celebration);
+}
+
+.space-theme-cottagecore {
+  background: linear-gradient(135deg, #F0FFFE, #FFF8E1);
+}
+
+.space-theme-darkacademia {
+  background: linear-gradient(135deg, #2D3748, #4A5568);
+  color: white;
+}
+
+.space-theme-y2k {
+  background: linear-gradient(135deg, #FF6B7A, #FFD93D);
+  color: white;
+}
+
+.space-theme-minimalist {
+  background: linear-gradient(135deg, #FFFFFF, #F7FAFC);
+  border: 1px solid var(--neutral-200);
+}
+
+.space-theme-cyberpunk {
+  background: linear-gradient(135deg, #8B5FBF, #4ECDC4);
+  color: white;
+}
+
+.space-theme-botanical {
+  background: linear-gradient(135deg, #10B981, #4ECDC4);
+  color: white;
+}
+
+/* Theme Collections - Seasonal & Trending */
+.theme-collections {
+  display: grid;
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.theme-collection {
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-collection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-celebration);
+}
+
+.collection-header {
+  display: flex;
+  align-items: center;
+  justify-content: between;
+  margin-bottom: var(--space-4);
+}
+
+.collection-badge {
+  background: var(--gradient-sunset);
+  color: white;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--text-small);
+  font-weight: 600;
+  margin-left: auto;
+}
+
+.collection-new {
+  background: var(--dopamine-yellow);
+  color: var(--neutral-800);
+  animation: pulse-glow 2s infinite;
+}
+
+.collection-trending {
+  background: var(--flock-coral);
+  animation: gentle-pop 2s infinite;
+}
+
+.collection-seasonal {
+  background: var(--community-teal);
+}
+
+.collection-preview {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.collection-item {
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-gentle);
+}
+
+.collection-item:hover {
+  transform: scale(1.05);
+  z-index: 1;
+}
+
+/* Aesthetic Mood Selector */
+.mood-selector {
+  background: var(--gradient-ocean);
+  color: white;
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
+  text-align: center;
+}
+
+.mood-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.mood-option {
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-gentle);
+  border: 2px solid transparent;
+  text-align: center;
+}
+
+.mood-option:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.mood-option.selected {
+  border-color: white;
+  background: rgba(255, 255, 255, 0.3);
+  animation: dopamine-hit var(--duration-celebration) var(--ease-excitement);
+}
+
+.mood-icon {
+  font-size: 2rem;
+  margin-bottom: var(--space-2);
+  display: block;
+}
+
+/* Share Your Aesthetic Button */
+.share-aesthetic-btn {
+  background: var(--gradient-celebration);
+  color: white;
+  border: none;
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-full);
+  font-size: var(--text-h3);
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow-celebration);
+  transition: all var(--duration-normal) var(--ease-celebration);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin-top: var(--space-6);
+}
+
+.share-aesthetic-btn::before {
+  content: '📸✨';
+  position: absolute;
+  left: var(--space-4);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+}
+
+.share-aesthetic-btn:hover {
+  transform: scale(1.05);
+  animation: rainbow-glow 2s linear infinite;
+}
+
+.share-aesthetic-btn:active {
+  transform: scale(0.98);
+}
+
+/* Instagram Story Template Generator */
+.story-template-generator {
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-lg);
+  margin-bottom: var(--space-8);
+}
+
+.story-preview {
+  aspect-ratio: 9/16;
+  max-width: 300px;
+  margin: 0 auto var(--space-6);
+  border-radius: var(--radius-lg);
+  background: var(--gradient-sunset);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-celebration);
+}
+
+.story-content {
+  position: absolute;
+  inset: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+  text-align: center;
+}
+
+.story-header {
+  font-size: var(--text-small);
+  opacity: 0.9;
+}
+
+.story-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.story-achievement {
+  font-size: 4rem;
+  margin-bottom: var(--space-4);
+  animation: bounce-gentle 2s infinite;
+}
+
+.story-text {
+  font-size: var(--text-h2);
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+}
+
+.story-subtext {
+  font-size: var(--text-body);
+  opacity: 0.8;
+}
+
+.story-footer {
+  font-size: var(--text-small);
+  opacity: 0.7;
+}
+
+/* Template Options */
+.story-templates {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.story-template {
+  aspect-ratio: 9/16;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all var(--duration-fast) var(--ease-gentle);
+  overflow: hidden;
+  position: relative;
+}
+
+.story-template:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md);
+}
+
+.story-template.selected {
+  border-color: var(--focus-purple);
+  animation: gentle-pop var(--duration-normal) var(--ease-gentle);
+}
+
+.story-template-celebration {
+  background: var(--gradient-celebration);
+}
+
+.story-template-progress {
+  background: var(--gradient-ocean);
+}
+
+.story-template-aesthetic {
+  background: var(--gradient-sunset);
+}
+
+.story-template-minimal {
+  background: linear-gradient(135deg, #FFFFFF, #F7FAFC);
+  border: 1px solid var(--neutral-200);
+}
+
+/* Customization Toolbar */
+.customization-toolbar {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--space-6);
+}
+
+.toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.toolbar-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--neutral-200);
+  background: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all var(--duration-fast) var(--ease-gentle);
+}
+
+.toolbar-btn:hover {
+  border-color: var(--focus-purple);
+  background: var(--focus-purple-10);
+  transform: scale(1.1);
+}
+
+.toolbar-btn.active {
+  border-color: var(--focus-purple);
+  background: var(--focus-purple);
+  color: white;
+}
+
+/* Aesthetic Progress Bars */
+.aesthetic-progress-container {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.aesthetic-progress-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: var(--gradient-celebration);
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.aesthetic-progress-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.aesthetic-progress-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-full);
+  background: var(--gradient-sunset);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  flex-shrink: 0;
+}
+
+.aesthetic-progress-content {
+  flex: 1;
+}
+
+.aesthetic-progress-title {
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+.aesthetic-progress-bar {
+  height: 8px;
+  background: var(--neutral-100);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+}
+
+.aesthetic-progress-fill {
+  height: 100%;
+  background: var(--gradient-celebration);
+  border-radius: var(--radius-full);
+  transition: width var(--duration-slow) var(--ease-excitement);
+  position: relative;
+}
+
+.aesthetic-progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+  animation: progress-shimmer 2s infinite;
+}
+
+@keyframes progress-shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Shareable Aesthetic Cards */
+.aesthetic-share-card {
+  background: var(--gradient-celebration);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-celebration);
+  margin: var(--space-6) 0;
+}
+
+.aesthetic-share-card::before {
+  content: '✨🎨✨';
+  position: absolute;
+  top: var(--space-4);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--text-h3);
+  animation: bounce-gentle 2s infinite;
+}
+
+.aesthetic-share-preview {
+  width: 100px;
+  height: 100px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  margin: var(--space-6) auto var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+}
+
+.aesthetic-share-title {
+  font-size: var(--text-h1);
+  font-weight: 800;
+  margin-bottom: var(--space-2);
+}
+
+.aesthetic-share-subtitle {
+  font-size: var(--text-body);
+  opacity: 0.9;
+  margin-bottom: var(--space-6);
+}
+
+.aesthetic-share-actions {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: center;
+}
+
+.aesthetic-share-btn {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-gentle);
+}
+
+.aesthetic-share-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .avatar-theme-selector {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .space-theme-selector {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .mood-options {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .story-templates {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .customization-toolbar {
+    flex-wrap: wrap;
+  }
+  
+  .aesthetic-share-actions {
+    flex-direction: column;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .study-space-creator,
+  .story-template-generator,
+  .aesthetic-progress-container {
+    background: var(--neutral-100);
+  }
+  
+  .theme-collection {
+    background: var(--neutral-100);
+  }
+  
+  .toolbar-btn {
+    background: var(--neutral-100);
+    border-color: var(--neutral-300);
+  }
+}
+
+/* Animation performance optimizations */
+.avatar-preview,
+.study-space-preview,
+.aesthetic-share-card {
+  will-change: transform;
+  backface-visibility: hidden;
+}
