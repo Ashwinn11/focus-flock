@@ -270,6 +270,7 @@ interface MediaState {
   toggleScreenShare: () => void;
   setConnecting: (connecting: boolean) => void;
   setError: (error: string | null) => void;
+  clearAllStreams: () => void;
 }
 
 export const useMediaStore = create<MediaState>()(
@@ -310,6 +311,28 @@ export const useMediaStore = create<MediaState>()(
       },
       setConnecting: (connecting) => set({ isConnecting: connecting }),
       setError: (error) => set({ error }),
+      clearAllStreams: () => {
+        const { localStream, remoteStreams } = get();
+        
+        // Stop local stream tracks
+        if (localStream) {
+          localStream.getTracks().forEach(track => track.stop());
+        }
+        
+        // Stop remote stream tracks
+        remoteStreams.forEach(stream => {
+          stream.getTracks().forEach(track => track.stop());
+        });
+        
+        set({ 
+          localStream: null, 
+          remoteStreams: new Map(),
+          isAudioEnabled: true,
+          isVideoEnabled: true,
+          isScreenSharing: false,
+          error: null
+        });
+      },
     }),
     { name: 'media-store' }
   )
