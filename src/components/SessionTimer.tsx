@@ -64,9 +64,6 @@ const SessionTimer: React.FC<SessionTimerProps> = ({
     }
   };
 
-  const isLowTime = timeRemaining <= 300; // Last 5 minutes
-  const isVeryLowTime = timeRemaining <= 60; // Last minute
-
   const getProgressBarColor = () => {
     switch (currentPhase) {
       case 'focus': return 'bg-community-teal';
@@ -75,6 +72,9 @@ const SessionTimer: React.FC<SessionTimerProps> = ({
       default: return 'bg-dopamine-yellow';
     }
   };
+
+  const isLowTime = timeRemaining <= 300; // Last 5 minutes
+  const isVeryLowTime = timeRemaining <= 60; // Last minute
 
   return (
     <div className={clsx('text-center space-y-4', className)}>
@@ -115,7 +115,7 @@ const SessionTimer: React.FC<SessionTimerProps> = ({
         key={getEncouragementMessage()} // Re-animate when message changes
       >
         {getEncouragementMessage()}
-      </p>
+      </motion.p>
 
       {/* Progress Indicator */}
       <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
