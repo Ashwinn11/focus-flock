@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
-import { User, Session, EnergyLevel, SessionType, Achievement, Notification } from '@/types';
+import { User, Session, EnergyLevel, SessionType, Achievement, Notification, StudyGroup, ForumPost, FriendRequest, ActivityFeedItem } from '@/types';
 
 // User Store
 interface UserState {
@@ -248,6 +248,134 @@ export const useUIStore = create<UIState>()(
       },
     }),
     { name: 'ui-store' }
+  )
+);
+
+// Social Store
+interface SocialState {
+  friends: User[];
+  friendRequests: FriendRequest[];
+  studyGroups: StudyGroup[];
+  activityFeed: ActivityFeedItem[];
+  isLoading: boolean;
+  error: string | null;
+  
+  // Actions
+  setFriends: (friends: User[]) => void;
+  addFriend: (friend: User) => void;
+  removeFriend: (friendId: string) => void;
+  setFriendRequests: (requests: FriendRequest[]) => void;
+  addFriendRequest: (request: FriendRequest) => void;
+  removeFriendRequest: (requestId: string) => void;
+  setStudyGroups: (groups: StudyGroup[]) => void;
+  addStudyGroup: (group: StudyGroup) => void;
+  updateStudyGroup: (groupId: string, updates: Partial<StudyGroup>) => void;
+  setActivityFeed: (feed: ActivityFeedItem[]) => void;
+  addActivityItem: (item: ActivityFeedItem) => void;
+  setLoading: (loading: boolean) => void;
+  setError: (error: string | null) => void;
+}
+
+export const useSocialStore = create<SocialState>()(
+  devtools(
+    (set, get) => ({
+      friends: [],
+      friendRequests: [],
+      studyGroups: [],
+      activityFeed: [],
+      isLoading: false,
+      error: null,
+
+      setFriends: (friends) => set({ friends }),
+      addFriend: (friend) => {
+        const { friends } = get();
+        set({ friends: [...friends, friend] });
+      },
+      removeFriend: (friendId) => {
+        const { friends } = get();
+        set({ friends: friends.filter(f => f.id !== friendId) });
+      },
+      setFriendRequests: (requests) => set({ friendRequests: requests }),
+      addFriendRequest: (request) => {
+        const { friendRequests } = get();
+        set({ friendRequests: [...friendRequests, request] });
+      },
+      removeFriendRequest: (requestId) => {
+        const { friendRequests } = get();
+        set({ friendRequests: friendRequests.filter(r => r.id !== requestId) });
+      },
+      setStudyGroups: (groups) => set({ studyGroups: groups }),
+      addStudyGroup: (group) => {
+        const { studyGroups } = get();
+        set({ studyGroups: [...studyGroups, group] });
+      },
+      updateStudyGroup: (groupId, updates) => {
+        const { studyGroups } = get();
+        set({
+          studyGroups: studyGroups.map(g => 
+            g.id === groupId ? { ...g, ...updates } : g
+          )
+        });
+      },
+      setActivityFeed: (feed) => set({ activityFeed: feed }),
+      addActivityItem: (item) => {
+        const { activityFeed } = get();
+        set({ activityFeed: [item, ...activityFeed] });
+      },
+      setLoading: (loading) => set({ isLoading: loading }),
+      setError: (error) => set({ error }),
+    }),
+    { name: 'social-store' }
+  )
+);
+
+// Forum Store
+interface ForumState {
+  posts: ForumPost[];
+  categories: any[];
+  isLoading: boolean;
+  error: string | null;
+  
+  // Actions
+  setPosts: (posts: ForumPost[]) => void;
+  addPost: (post: ForumPost) => void;
+  updatePost: (postId: string, updates: Partial<ForumPost>) => void;
+  removePost: (postId: string) => void;
+  setCategories: (categories: any[]) => void;
+  setLoading: (loading: boolean) => void;
+  setError: (error: string | null) => void;
+}
+
+export const useForumStore = create<ForumState>()(
+  devtools(
+    (set, get) => ({
+      posts: [],
+      categories: [],
+      isLoading: false,
+      error: null,
+
+      setPosts: (posts) => set({ posts }),
+      addPost: (post) => {
+        const { posts } = get();
+        set({ posts: [post, ...posts] });
+      },
+      updatePost: (postId, updates) => {
+        const { posts } = get();
+        set({
+          posts: posts.map(p => 
+            p.id === postId ? { ...p, ...updates } : p
+          )
+        });
+      },
+      removePost: (postId) => {
+        const { posts } = get();
+        set({ posts: posts.filter(p => p.id !== postId) });
+      },
+      setCategories: (categories) => set({ categories }),
+      setLoading: (loading) => set({ isLoading: loading }),
+      setError: (error) => set({ error }),
+    }),
+    { name: 'forum-store' }
   )
 );
 

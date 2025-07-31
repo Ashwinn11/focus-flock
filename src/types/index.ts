@@ -136,6 +136,75 @@ export interface StudyGroupMember {
   isActive: boolean;
 }
 
+// Forum Types
+export interface ForumPost {
+  id: string;
+  title: string;
+  content: string;
+  authorId: string;
+  authorName: string;
+  authorAvatar?: string;
+  category: string;
+  tags: string[];
+  likes: number;
+  replies: number;
+  isLiked: boolean;
+  isPinned: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface ForumCategory {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  postCount: number;
+  color: string;
+}
+
+export interface ForumReply {
+  id: string;
+  postId: string;
+  authorId: string;
+  authorName: string;
+  authorAvatar?: string;
+  content: string;
+  likes: number;
+  isLiked: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+// Social Connection Types
+export interface FriendRequest {
+  id: string;
+  fromUserId: string;
+  toUserId: string;
+  message?: string;
+  status: 'pending' | 'accepted' | 'declined';
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface Friendship {
+  id: string;
+  user1Id: string;
+  user2Id: string;
+  createdAt: Date;
+  lastInteraction: Date;
+}
+
+export interface ActivityFeedItem {
+  id: string;
+  type: 'session_complete' | 'achievement' | 'streak' | 'group_join' | 'friend_add';
+  userId: string;
+  content: string;
+  metadata?: any;
+  isPublic: boolean;
+  createdAt: Date;
+}
+
 // Creator Economy Types
 export interface Creator {
   id: string;
