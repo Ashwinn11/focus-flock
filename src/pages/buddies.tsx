@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Head from 'next/head';
+import Button from '@/components/Button';
 import StudyBuddy, { StudyBuddyFinder } from '@/components/StudyBuddy';
 import { User, EnergyLevel } from '@/types';
 import toast from 'react-hot-toast';
