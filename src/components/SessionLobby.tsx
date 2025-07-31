@@ -318,3 +318,5 @@ const SessionLobby: React.FC<SessionLobbyProps> = ({
 };
 
 export default SessionLobby;
+
+export default SessionLobby
