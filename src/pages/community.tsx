@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Head from 'next/head';
+import { clsx } from 'clsx';
 import Button from '@/components/Button';
 import Card, { CardHeader, CardTitle, CardContent } from '@/components/Card';
 import { StudyBuddyFinder } from '@/components/StudyBuddy';
