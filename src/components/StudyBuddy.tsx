@@ -497,4 +497,3 @@ export const StudyBuddyFinder: React.FC<StudyBuddyFinderProps> = ({
 };
 
 export default StudyBuddy;
-export { StudyBuddyFinder };
