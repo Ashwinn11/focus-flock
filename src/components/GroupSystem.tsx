@@ -91,13 +91,13 @@ const GroupCard: React.FC<GroupCardProps> = ({ group, onJoin, onView, className 
               <span>{group.name}</span>
             </CardTitle>
             {group.description && (
-              <p className="text-small text-gray-600 mt-1 line-clamp-2">
+              <p className="text-small text-surface-variant mt-1 line-clamp-2">
                 {group.description}
               </p>
             )}
           </div>
           {group.isPrivate && (
-            <span className="px-2 py-1 bg-gray-200 text-gray-700 text-tiny rounded-full">
+            <span className="px-2 py-1 bg-surface-container-high text-text-secondary text-tiny rounded-full">
               Private
             </span>
           )}
@@ -119,19 +119,19 @@ const GroupCard: React.FC<GroupCardProps> = ({ group, onJoin, onView, className 
                 </div>
               ))}
               {activeMembers.length > 4 && (
-                <div className="w-8 h-8 rounded-full bg-gray-200 border-2 border-white flex items-center justify-center text-gray-600 text-xs font-bold">
+                <div className="w-8 h-8 rounded-full bg-surface-container-high border-2 border-white flex items-center justify-center text-surface-variant text-xs font-bold">
                   +{activeMembers.length - 4}
                 </div>
               )}
             </div>
-            <span className="text-small text-gray-600">
+            <span className="text-small text-surface-variant">
               {activeMembers.length}/{group.maxMembers} members
             </span>
           </div>
           
           <div className={clsx(
             'px-2 py-1 rounded-full text-tiny font-medium',
-            hasSpace ? 'bg-community-teal/10 text-community-teal' : 'bg-gray-100 text-gray-600'
+            hasSpace ? 'bg-community-teal/10 text-community-teal' : 'bg-surface-container text-surface-variant'
           )}>
             {hasSpace ? 'Open' : 'Full'}
           </div>
@@ -242,7 +242,7 @@ const CreateGroupModal: React.FC<CreateGroupModalProps> = ({ isOpen, onClose, on
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-small font-medium text-gray-700 mb-2">
+            <label className="block text-small font-medium text-text-secondary mb-2">
               Group Name *
             </label>
             <input
@@ -250,13 +250,13 @@ const CreateGroupModal: React.FC<CreateGroupModalProps> = ({ isOpen, onClose, on
               value={formData.name}
               onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
               placeholder="e.g., CS Study Squad, Writing Circle"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-focus-purple focus:border-transparent"
+              className="w-full px-3 py-2 border border-outline rounded-lg focus:ring-2 focus:ring-focus-purple focus:border-transparent"
               required
             />
           </div>
 
           <div>
-            <label className="block text-small font-medium text-gray-700 mb-2">
+            <label className="block text-small font-medium text-text-secondary mb-2">
               Description
             </label>
             <textarea
@@ -264,12 +264,12 @@ const CreateGroupModal: React.FC<CreateGroupModalProps> = ({ isOpen, onClose, on
               onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
               placeholder="What will your group focus on?"
               rows={3}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-focus-purple focus:border-transparent resize-none"
+              className="w-full px-3 py-2 border border-outline rounded-lg focus:ring-2 focus:ring-focus-purple focus:border-transparent resize-none"
             />
           </div>
 
           <div>
-            <label className="block text-small font-medium text-gray-700 mb-2">
+            <label className="block text-small font-medium text-text-secondary mb-2">
               Maximum Members
             </label>
             <input
@@ -288,7 +288,7 @@ const CreateGroupModal: React.FC<CreateGroupModalProps> = ({ isOpen, onClose, on
           </div>
 
           <div>
-            <label className="block text-small font-medium text-gray-700 mb-2">
+            <label className="block text-small font-medium text-text-secondary mb-2">
               Tags
             </label>
             <div className="flex space-x-2 mb-2">
@@ -297,7 +297,7 @@ const CreateGroupModal: React.FC<CreateGroupModalProps> = ({ isOpen, onClose, on
                 value={tagInput}
                 onChange={(e) => setTagInput(e.target.value)}
                 placeholder="Add a tag..."
-                className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-focus-purple focus:border-transparent text-sm"
+                className="flex-1 px-3 py-2 border border-outline rounded-lg focus:ring-2 focus:ring-focus-purple focus:border-transparent text-sm"
                 onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTag())}
               />
               <Button type="button" variant="ghost" size="sm" onClick={addTag}>
@@ -325,10 +325,10 @@ const CreateGroupModal: React.FC<CreateGroupModalProps> = ({ isOpen, onClose, on
             )}
           </div>
 
-          <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+          <div className="flex items-center justify-between p-3 bg-surface-dim rounded-lg">
             <div>
               <h4 className="font-semibold text-sm">Private Group</h4>
-              <p className="text-tiny text-gray-600">Only invited members can join</p>
+              <p className="text-tiny text-surface-variant">Only invited members can join</p>
             </div>
             <label className="relative inline-flex items-center cursor-pointer">
               <input
@@ -337,7 +337,7 @@ const CreateGroupModal: React.FC<CreateGroupModalProps> = ({ isOpen, onClose, on
                 onChange={(e) => setFormData(prev => ({ ...prev, isPrivate: e.target.checked }))}
                 className="sr-only peer"
               />
-              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-focus-purple/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-focus-purple"></div>
+              <div className="w-11 h-6 bg-surface-container-high peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-focus-purple/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-focus-purple"></div>
             </label>
           </div>
 
@@ -404,7 +404,7 @@ const GroupSystem: React.FC<GroupSystemProps> = ({
           </div>
         </CardHeader>
         <CardContent>
-          <p className="text-body text-gray-600 mb-6">
+          <p className="text-body text-surface-variant mb-6">
             Join study groups to connect with like-minded learners and build lasting study relationships.
           </p>
 
@@ -416,12 +416,12 @@ const GroupSystem: React.FC<GroupSystemProps> = ({
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search groups by name or description..."
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-focus-purple focus:border-transparent"
+                className="w-full px-4 py-3 border border-outline rounded-lg focus:ring-2 focus:ring-focus-purple focus:border-transparent"
               />
             </div>
 
             <div>
-              <label className="block text-small font-medium text-gray-700 mb-2">
+              <label className="block text-small font-medium text-text-secondary mb-2">
                 Filter by tags
               </label>
               <div className="flex flex-wrap gap-2">
@@ -433,7 +433,7 @@ const GroupSystem: React.FC<GroupSystemProps> = ({
                       'px-3 py-1 rounded-full text-small font-medium transition-colors',
                       selectedTags.includes(tag)
                         ? 'bg-focus-purple text-white'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                        : 'bg-surface-container text-text-secondary hover:bg-surface-container-high'
                     )}
                   >
                     #{tag}
@@ -473,7 +473,7 @@ const GroupSystem: React.FC<GroupSystemProps> = ({
               <span className="text-2xl text-white">🔍</span>
             </div>
             <h3 className="text-h2 font-semibold mb-2">No Groups Found</h3>
-            <p className="text-body text-gray-600 mb-6">
+            <p className="text-body text-surface-variant mb-6">
               {searchQuery || selectedTags.length > 0 
                 ? 'Try adjusting your search or filters'
                 : 'Be the first to create a study group!'

@@ -160,7 +160,7 @@ const MatchingAlgorithm: React.FC<MatchingAlgorithmProps> = ({
             exit={{ opacity: 0, y: -20 }}
             className="text-center"
           >
-            <Card className="bg-gradient-to-br from-focus-purple/5 to-community-teal/5">
+            <Card variant="info">
               <CardContent className="py-12">
                 {!isMatching ? (
                   <>
@@ -172,7 +172,7 @@ const MatchingAlgorithm: React.FC<MatchingAlgorithmProps> = ({
                     </motion.div>
                     
                     <h2 className="text-h1 font-bold mb-4">Find Your Focus Flock</h2>
-                    <p className="text-body text-gray-600 mb-8 max-w-2xl mx-auto">
+                    <p className="text-body text-text-secondary mb-8 max-w-2xl mx-auto">
                       We'll match you with study buddies who share your energy level and focus goals. 
                       Ready to find your perfect focus session?
                     </p>
@@ -205,16 +205,16 @@ const MatchingAlgorithm: React.FC<MatchingAlgorithmProps> = ({
                     </motion.div>
                     
                     <h2 className="text-h1 font-bold mb-4">Finding Your Perfect Match...</h2>
-                    <p className="text-body text-gray-600 mb-8">
+                    <p className="text-body text-text-secondary mb-8">
                       Analyzing energy levels, session types, and compatibility...
                     </p>
                     
                     <div className="max-w-md mx-auto">
-                      <div className="flex justify-between text-small text-gray-500 mb-2">
+                      <div className="flex justify-between text-small text-text-muted mb-2">
                         <span>Matching Progress</span>
                         <span>Finding sessions...</span>
                       </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="w-full bg-bg-tertiary rounded-full h-2">
                         <motion.div
                           className="bg-gradient-to-r from-focus-purple to-community-teal h-2 rounded-full"
                           initial={{ width: 0 }}
@@ -242,7 +242,7 @@ const MatchingAlgorithm: React.FC<MatchingAlgorithmProps> = ({
               <h2 className="text-h1 font-bold mb-4">
                 {matchedSessions.length > 0 ? 'Perfect Matches Found!' : 'No Matches Right Now'}
               </h2>
-              <p className="text-body text-gray-600">
+              <p className="text-body text-text-secondary">
                 {matchedSessions.length > 0 
                   ? `We found ${matchedSessions.length} session${matchedSessions.length > 1 ? 's' : ''} that match your ${userEnergyLevel} energy level`
                   : "Don't worry! You can create a new session and others will find you."
@@ -268,13 +268,13 @@ const MatchingAlgorithm: React.FC<MatchingAlgorithmProps> = ({
                               <span>{session.title}</span>
                             </CardTitle>
                             {session.description && (
-                              <p className="text-small text-gray-600 mt-1">
+                              <p className="text-small text-text-secondary mt-1">
                                 {session.description}
                               </p>
                             )}
                           </div>
                           <div className="text-right">
-                            <div className="flex items-center space-x-1 text-small text-gray-500">
+                            <div className="flex items-center space-x-1 text-small text-text-muted">
                               <span>{getCompatibilityScore(session)}%</span>
                               <span className="text-community-teal">match</span>
                             </div>
@@ -284,7 +284,7 @@ const MatchingAlgorithm: React.FC<MatchingAlgorithmProps> = ({
                       
                       <CardContent>
                         <div className="flex items-center justify-between mb-4">
-                          <div className="flex items-center space-x-4 text-small text-gray-600">
+                          <div className="flex items-center space-x-4 text-small text-text-secondary">
                             <span className="flex items-center space-x-1">
                               <span>{getEnergyEmoji(session.energyLevel)}</span>
                               <span className="capitalize">{session.energyLevel}</span>
@@ -306,7 +306,7 @@ const MatchingAlgorithm: React.FC<MatchingAlgorithmProps> = ({
                             </div>
                           ))}
                           {session.participants.length > 3 && (
-                            <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 text-tiny font-semibold">
+                            <div className="w-8 h-8 rounded-full bg-bg-tertiary flex items-center justify-center text-text-secondary text-tiny font-semibold">
                               +{session.participants.length - 3}
                             </div>
                           )}
@@ -331,7 +331,7 @@ const MatchingAlgorithm: React.FC<MatchingAlgorithmProps> = ({
                     <span className="text-2xl text-white">🌱</span>
                   </div>
                   <h3 className="text-h2 font-semibold mb-4">Be the First to Start!</h3>
-                  <p className="text-body text-gray-600 mb-6 max-w-md mx-auto">
+                  <p className="text-body text-text-secondary mb-6 max-w-md mx-auto">
                     No sessions match your energy right now, but that's okay! 
                     Create your own session and watch your flock gather.
                   </p>

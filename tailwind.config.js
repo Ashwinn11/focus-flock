@@ -4,6 +4,7 @@ module.exports = {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
@@ -54,37 +55,45 @@ module.exports = {
           dark: '#E6C435',
         },
         
-        // Semantic colors
+        // Semantic colors using CSS variables
         'text': {
-          primary: '#333333',
-          secondary: '#555555',
-          tertiary: '#777777',
-          muted: '#999999',
-          inverse: '#FFFFFF',
+          primary: 'var(--text-primary)',
+          secondary: 'var(--text-secondary)',
+          tertiary: 'var(--text-tertiary)',
+          muted: 'var(--text-muted)',
+          inverse: 'var(--text-inverse)',
         },
         'bg': {
-          primary: '#F6F5F3',
-          secondary: '#FFFFFF',
-          tertiary: '#EEEEEE',
+          primary: 'var(--bg-primary)',
+          secondary: 'var(--bg-secondary)',
+          tertiary: 'var(--bg-tertiary)',
         },
         'border': {
-          subtle: '#E0E0E0',
-          default: '#CCCCCC',
-          emphasis: '#999999',
+          subtle: 'var(--border-subtle)',
+          default: 'var(--border-default)',
+          emphasis: 'var(--border-emphasis)',
         },
+        'surface': {
+          dim: 'var(--surface-dim)',
+          container: 'var(--surface-container)',
+          'container-high': 'var(--surface-container-high)',
+          variant: 'var(--on-surface-variant)',
+        },
+        'outline': 'var(--outline)',
+        'outline-variant': 'var(--outline-variant)',
       },
       fontFamily: {
         'body': ['Inter', 'system-ui', 'sans-serif'],
         'display': ['Outfit', 'system-ui', 'sans-serif'],
       },
       fontSize: {
-        'display': ['clamp(2.5rem, 5vw, 3.5rem)', { lineHeight: '1.1', letterSpacing: '-0.025em' }],
-        'h1': ['clamp(2rem, 4vw, 2.5rem)', { lineHeight: '1.2' }],
-        'h2': ['clamp(1.5rem, 3vw, 2rem)', { lineHeight: '1.3' }],
-        'h3': ['clamp(1.25rem, 2.5vw, 1.5rem)', { lineHeight: '1.4' }],
-        'body': ['1.125rem', { lineHeight: '1.6' }],
-        'small': ['1rem', { lineHeight: '1.5' }],
-        'tiny': ['0.875rem', { lineHeight: '1.4' }],
+        'display': ['clamp(2rem, 4vw, 2.5rem)', { lineHeight: '1.1', letterSpacing: '-0.025em' }],
+        'h1': ['clamp(1.5rem, 3vw, 2rem)', { lineHeight: '1.2' }],
+        'h2': ['clamp(1.25rem, 2.5vw, 1.5rem)', { lineHeight: '1.3' }],
+        'h3': ['clamp(1rem, 2vw, 1.25rem)', { lineHeight: '1.4' }],
+        'body': ['1rem', { lineHeight: '1.6' }],
+        'small': ['0.875rem', { lineHeight: '1.5' }],
+        'tiny': ['0.75rem', { lineHeight: '1.4' }],
       },
       spacing: {
         '18': '4.5rem',

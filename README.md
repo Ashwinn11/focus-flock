@@ -1,269 +1,385 @@
-# Focus Flock MVP
+# Focus Flock - ADHD-Friendly Design System
 
-## 🧠 ADHD-Friendly Social Productivity Platform
+A comprehensive React component library specifically designed for neurodivergent users, particularly those with ADHD. This design system prioritizes clarity, accessibility, and cognitive load reduction while maintaining visual appeal and social engagement features.
 
-Focus Flock is a body doubling platform designed specifically for neurodivergent users, making productivity accessible, social, and shame-free.
+## 🎯 Design Philosophy
 
-### ✨ Key Features
+Focus Flock's design system is built on three core principles:
 
-- **Body Doubling Sessions**: Real-time video/audio focus sessions
-- **Energy Matching**: Connect with study buddies who share your energy level
-- **ADHD-Optimized Design**: Dopamine-driven micro-rewards and gentle encouragement
-- **Creator Economy**: Monetization opportunities for session hosts
-- **University Partnerships**: Bulk acquisition through educational institutions
-- **Freemium Model**: Free tier with premium features for power users
+1. **Cognitive Load Reduction** - Minimize mental effort required to use the interface
+2. **Clear Visual Hierarchy** - Guide attention to the most important elements  
+3. **Accessible Social Connection** - Make productivity feel communal, not isolating
 
-### 🎯 Target Market
+## 🚀 Quick Start
 
-- **Primary**: Students (60%) - Ages 18-24, price-sensitive, high ADHD diagnosis rates
-- **Secondary**: Young Professionals with ADHD (25%) - Remote work challenges
-- **Tertiary**: Content Creators (10%) - Natural community builders
-- **Quaternary**: Neurodivergent Community (5%) - ADHD, autism, anxiety
+```bash
+# Install dependencies
+npm install
 
-### 🏗️ Tech Stack
+# Start development server
+npm run dev
 
-- **Frontend**: Next.js 14, React 18, TypeScript
-- **Styling**: Tailwind CSS with custom ADHD-friendly design system
-- **Animations**: Framer Motion for dopamine-driven micro-rewards
-- **State Management**: Zustand for lightweight state management
-- **Real-time**: Socket.io for chat and presence, WebRTC for video
-- **UI Components**: Custom ADHD-optimized component library
-
-### 🚀 Quick Start
-
-1. **Install Dependencies**
-   ```bash
-   npm install
-   ```
-
-2. **Start Development Server**
-   ```bash
-   npm run dev
-   ```
-
-3. **Open Browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
-
-### 📁 Project Structure
-
-```
-focus-flock-mvp/
-├── src/
-│   ├── components/          # ADHD-friendly UI components
-│   │   ├── Button.tsx      # Celebration animations
-│   │   ├── Card.tsx        # Session and achievement cards
-│   │   ├── ProgressBar.tsx # Progress Garden alternative
-│   │   └── EnergySelector.tsx # Energy level matching
-│   ├── pages/              # Next.js pages
-│   │   ├── index.tsx       # Landing page
-│   │   └── _app.tsx       # App wrapper
-│   ├── store/              # Zustand state management
-│   │   └── index.ts        # User, session, achievement stores
-│   ├── types/              # TypeScript definitions
-│   │   └── index.ts        # User, session, achievement types
-│   └── styles/             # Global styles
-│       └── globals.css     # ADHD-friendly design tokens
-├── public/                 # Static assets
-├── docs/                   # Documentation
-└── package.json           # Dependencies and scripts
+# View the demo page
+open http://localhost:3000/demo
 ```
 
-### 🎨 Design System
+## 🎨 Core Components
 
-#### ADHD-Friendly Principles
-- **Dopamine-Driven Micro-Rewards**: Immediate feedback and celebration animations
-- **Shame-Free Environment**: No failure language, gentle redirects
-- **Visual Hierarchy**: Clear information architecture for attention differences
-- **Executive Function Support**: Context reminders and transition assistance
+### Button Component
 
-#### Brand Colors
-- **Focus Purple** (`#8B5FBF`): Primary brand color - focus and intention
-- **Flock Coral** (`#FF6B7A`): Community warmth and connection
-- **Community Teal** (`#4ECDC4`): Growth and harmony
-- **Dopamine Yellow** (`#FFD93D`): Celebration and achievement
+High-contrast buttons with haptic feedback and generous touch targets.
 
-#### Typography Scale
-- **Display**: `clamp(2rem, 4vw, 2.5rem)` - Hero headlines
-- **H1**: `clamp(1.75rem, 3vw, 2rem)` - Page titles
-- **H2**: `clamp(1.5rem, 2.5vw, 1.75rem)` - Section headers
-- **H3**: `clamp(1.25rem, 2vw, 1.5rem)` - Card titles
-- **Body**: `1rem` - Default text
-- **Small**: `0.875rem` - Secondary text
-
-### 🧩 Core Components
-
-#### Button Component
 ```tsx
-<Button 
-  variant="celebration" 
-  size="lg"
-  onClick={handleClick}
-  loading={isLoading}
->
-  ✨ Start Focus Session
+import Button from '@/components/Button';
+
+// Primary actions
+<Button variant="primary" size="lg">Start Focus Session</Button>
+
+// Energy-themed actions  
+<Button variant="teal">Join Community</Button>
+<Button variant="celebration">🎉 Celebrate</Button>
+
+// Semantic actions
+<Button variant="success">Complete Task</Button>
+<Button variant="warning">Need Break</Button>
+
+// Loading state
+<Button variant="primary" loading aria-describedby="loading-help">
+  Connecting...
 </Button>
 ```
 
-#### Card Component
+**Variants:** `primary`, `secondary`, `ghost`, `teal`, `celebration`, `coral`, `accent`, `success`, `warning`, `info`
+
+**Sizes:** `sm`, `md`, `lg`
+
+### Card Component
+
+Clear visual hierarchy with consistent spacing and typography.
+
 ```tsx
-<Card variant="session" onClick={handleSessionClick}>
+import Card, { CardHeader, CardTitle, CardSubtitle, CardContent, CardFooter } from '@/components/Card';
+
+// Information card
+<Card variant="primary">
   <CardHeader>
-    <CardTitle>Active Body Doubling</CardTitle>
-    <CardSubtitle>25 minutes of focused work</CardSubtitle>
+    <CardTitle>Study Session Available</CardTitle>
+    <CardSubtitle>Mathematics • 2 hours</CardSubtitle>
   </CardHeader>
   <CardContent>
-    Great job staying focused!
+    <p>Join Sarah and Mike for focused math study.</p>
   </CardContent>
+  <CardFooter>
+    <Button variant="primary">Join Session</Button>
+  </CardFooter>
+</Card>
+
+// Interactive card
+<Card variant="accent" interactive onClick={handleClick}>
+  <div className="text-center">
+    <div className="text-4xl mb-2">⚡</div>
+    <h3>High Energy Session</h3>
+  </div>
 </Card>
 ```
 
-#### Progress Bar
+**Variants:** `default`, `primary`, `secondary`, `accent`, `success`, `warning`, `info`, `session`, `achievement`, `celebration`
+
+### Energy Selector
+
+Match with study buddies based on your current energy level.
+
 ```tsx
-<ProgressBar 
-  progress={75} 
-  variant="celebration"
-  showLabel
-  label="Session Progress"
-/>
+import EnergySelector from '@/components/EnergySelector';
+import { EnergyLevel } from '@/types';
+
+function SessionCreator() {
+  const [selectedEnergy, setSelectedEnergy] = useState<EnergyLevel | null>(null);
+
+  return (
+    <EnergySelector
+      selectedEnergy={selectedEnergy}
+      onEnergySelect={setSelectedEnergy}
+      disabled={isLoading}
+    />
+  );
+}
 ```
 
-#### Energy Selector
-```tsx
-<EnergySelector
-  selectedEnergy={selectedEnergy}
-  onEnergySelect={setSelectedEnergy}
-/>
-```
-
-### 📊 State Management
-
-#### User Store
-```tsx
-const { currentUser, setUser, updateUser, logout } = useUserStore();
-```
-
-#### Session Store
-```tsx
-const { activeSession, availableSessions, setActiveSession } = useSessionStore();
-```
-
-#### Achievement Store
-```tsx
-const { achievements, unlockAchievement } = useAchievementStore();
-```
-
-#### UI Store
-```tsx
-const { theme, sidebarOpen, toggleSidebar } = useUIStore();
-```
-
-### 🎯 Key Features Implemented
-
-#### ✅ MVP Features
-- [x] ADHD-friendly landing page with energy selector
-- [x] Custom design system with celebration animations
-- [x] Responsive layout with mobile-first design
-- [x] State management with Zustand
-- [x] TypeScript type definitions
-- [x] Accessibility features (WCAG 2.1 AA)
-
-#### 🚧 Planned Features
-- [ ] Real-time video/audio sessions
-- [ ] User authentication and profiles
-- [ ] Session scheduling and matching
-- [ ] Achievement and gamification system
-- [ ] Creator economy features
-- [ ] University partnership integration
-
-### 🧠 ADHD-Specific Features
-
-#### Progress Garden
-Instead of linear streaks that create shame when broken, we use a growing garden metaphor:
-- 🌱 **Seeds** - Potential (unused days)
-- 🌿 **Sprouts** - Progress (partial sessions)
-- 🌸 **Blooms** - Achievement (completed sessions)
-
-#### Energy Matching
-Users select their energy level to match with compatible study buddies:
+**Energy Levels:**
 - ⚡ **High Energy** - Ready for big challenges
-- 🌊 **Steady Flow** - Consistent, focused work
+- 🌊 **Steady Flow** - Consistent, focused work  
 - 🌙 **Gentle Pace** - Calm, methodical approach
 - 🔋 **Recharge Mode** - Taking it easy today
 
-#### Celebration Moments
-- Immediate feedback within 100ms of actions
-- Particle effects for achievements
-- Haptic feedback for mobile devices
-- Variable reward schedules to maintain engagement
+### Progress Components
 
-### 🎨 Accessibility Features
+Visual feedback with milestone celebrations and gentle animations.
 
-- **High Contrast Mode**: Enhanced color ratios for visibility
-- **Reduced Motion**: Respects `prefers-reduced-motion` settings
-- **Large Text**: Scaled typography for readability
-- **Focus Indicators**: Clear focus rings for keyboard navigation
-- **Screen Reader Support**: Proper ARIA labels and semantic HTML
+```tsx
+import ProgressBar, { ProgressGarden } from '@/components/ProgressBar';
 
-### 📱 Responsive Design
+// Linear progress
+<ProgressBar 
+  progress={75} 
+  variant="session" 
+  showLabel 
+  label="Study Progress" 
+/>
 
-- **Mobile-First**: Thumb-friendly navigation and touch targets
-- **Tablet**: Two-column layouts with medium spacing
-- **Desktop**: Flexible columns with optimized spacing
-- **Touch Targets**: Minimum 44px height for all interactive elements
+// Progress garden (ADHD-friendly alternative)
+<ProgressGarden 
+  days={['bloom', 'sprout', 'bloom', 'seed', 'empty']} 
+  className="my-4" 
+/>
+```
 
-### 🚀 Performance Optimizations
+**Progress Variants:** `default`, `celebration`, `session`, `achievement`, `energy`
 
-- **GPU Acceleration**: Smooth animations with transform properties
-- **Lazy Loading**: Components load on demand
-- **Image Optimization**: Next.js automatic image optimization
-- **Bundle Splitting**: Code splitting for faster initial loads
+### Layout Component
 
-### 🧪 Testing Strategy
+Sticky header with clear navigation and accessibility panel integration.
 
-- **Unit Tests**: Jest for component testing
-- **Integration Tests**: User flow testing
-- **Accessibility Tests**: Automated a11y testing
-- **Performance Tests**: Lighthouse CI integration
+```tsx
+import Layout from '@/components/Layout';
 
-### 📈 Success Metrics
+function MyPage() {
+  return (
+    <Layout>
+      <div className="container mx-auto px-4 py-8">
+        <h1>Page Content</h1>
+      </div>
+    </Layout>
+  );
+}
+```
 
-#### User Engagement
-- Session completion rate (target: 80%+)
-- Daily active users (target: 60%+ retention)
-- Community interaction rate (40%+ weekly engagement)
+## ♿ Accessibility Features
 
-#### ADHD-Specific Outcomes
-- Self-reported productivity improvement (70%+)
-- Shame-free environment rating (4.5+ stars)
-- Community connection score (80%+ feel connected)
+### Built-in Support
 
-#### Business Metrics
-- Monthly recurring revenue growth
-- Customer acquisition cost <$25
-- LTV:CAC ratio >6:1
-- Monthly churn <5.5%
+- **WCAG 2.1 AA Compliance** - All components meet accessibility standards
+- **Keyboard Navigation** - Full keyboard support with focus management
+- **Screen Reader Support** - Comprehensive ARIA labels and descriptions
+- **High Contrast** - 4.5:1 minimum contrast ratio for all text
+- **Reduced Motion** - Respects `prefers-reduced-motion` setting
+- **Touch Targets** - Minimum 40px touch targets for mobile
 
-### 🤝 Contributing
+### Usage Examples
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+```tsx
+// Button with proper accessibility
+<Button 
+  variant="primary" 
+  aria-label="Start focus session"
+  aria-describedby="session-help"
+>
+  Start Session
+</Button>
+<div id="session-help" className="sr-only">
+  Begins a 25-minute focused work session with study buddy matching
+</div>
 
-### 📄 License
+// Card with keyboard navigation
+<Card 
+  interactive 
+  onClick={handleClick}
+  aria-label="Join study session with 3 participants"
+  role="button"
+  tabIndex={0}
+>
+  Study Session Content
+</Card>
+```
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## 🧠 ADHD-Specific Features
 
-### 🙏 Acknowledgments
+### Cognitive Load Management
 
-- ADHD community for feedback and insights
-- Design system inspired by ADHD-friendly UX research
-- Celebration animations inspired by successful gamification patterns
-- Body doubling concept from ADHD productivity research
+- **Progressive Disclosure** - Complex forms broken into steps
+- **Single Primary Action** - One main CTA per screen
+- **Clear Visual Hierarchy** - Consistent heading structure
+- **Generous Whitespace** - Reduced visual overwhelm
+
+### Emotional Regulation
+
+- **Positive Reinforcement** - Celebration cards and achievement animations
+- **Non-Judgmental Language** - Supportive copy throughout
+- **Energy Matching** - Respect different productivity states
+- **Gentle Transitions** - Smooth state changes without jarring interruptions
+
+### Social Connection
+
+- **Body Doubling** - Video sessions for accountability
+- **Community Integration** - Forum and group features
+- **Buddy Matching** - Energy-level based pairing
+- **Achievement Celebrations** - Positive reinforcement
+
+## 🎨 Design System
+
+### Color Palette
+
+```css
+/* Primary Brand Colors */
+--focus-purple: #6B46C1 / #B794F4 (light/dark)
+--flock-coral: #E53E3E / #FC8181
+--community-teal: #319795 / #4FD1C7
+--dopamine-yellow: #D69E2E / #F6E05E
+
+/* High Contrast Neutrals */
+--text-primary: #1A1A1A / #F7FAFC
+--bg-primary: #F6F5F3 / #0F1419
+--border-default: #CCCCCC / #718096
+```
+
+### Typography Scale
+
+```css
+/* Responsive typography */
+.text-display { font-size: clamp(2rem, 4vw, 2.5rem); }
+.text-h1 { font-size: clamp(1.5rem, 3vw, 2rem); }
+.text-h2 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); }
+.text-h3 { font-size: clamp(1rem, 2vw, 1.25rem); }
+.text-body { font-size: 1rem; line-height: 1.6; }
+```
+
+### Spacing System
+
+8px grid system for consistent spacing:
+- `4px`, `8px`, `12px`, `16px`, `24px`, `32px`, `48px`, `64px`, `80px`, `96px`
+
+## 📱 Responsive Design
+
+### Mobile-First Approach
+
+- **Touch Targets** - Minimum 44px on mobile
+- **Simplified Navigation** - Collapsible menu with clear icons
+- **Reduced Content** - Hide non-essential elements on small screens
+- **Gesture Support** - Swipe actions where appropriate
+
+### Breakpoints
+
+```css
+/* Mobile First */
+/* xs: 0px - 640px (default) */
+/* sm: 640px+ */
+/* md: 768px+ */
+/* lg: 1024px+ */
+/* xl: 1280px+ */
+```
+
+## 🧪 Testing
+
+### Accessibility Testing
+
+```bash
+# Install testing tools
+npm install --save-dev @axe-core/react jest-axe
+
+# Run accessibility tests
+npm run test:a11y
+```
+
+### Manual Testing Checklist
+
+- [ ] Keyboard navigation (Tab, Enter, Space, Arrow keys)
+- [ ] Screen reader testing (NVDA, JAWS, VoiceOver)
+- [ ] Color contrast validation
+- [ ] Focus indicator visibility
+- [ ] Touch target size (44px minimum)
+
+### ADHD-Specific Testing
+
+- [ ] Test with cognitive load simulation
+- [ ] Verify task completion with interruptions
+- [ ] Check clarity of error messages
+- [ ] Test energy level matching
+- [ ] Validate progressive disclosure
+
+## 🚀 Performance
+
+### Optimization Features
+
+- **CSS Custom Properties** - Efficient theme switching
+- **Framer Motion** - Optimized animations
+- **Lazy Loading** - Heavy components loaded on demand
+- **Semantic HTML** - Better parsing and accessibility
+
+### Bundle Size
+
+- **Initial Load** - <500KB
+- **Lighthouse Score** - 95+ accessibility
+- **Core Web Vitals** - Green zone performance
+
+## 📚 Documentation
+
+### Design System Files
+
+- [`DESIGN_SYSTEM.md`](./DESIGN_SYSTEM.md) - Comprehensive design system overview
+- [`COMPONENT_GUIDELINES.md`](./COMPONENT_GUIDELINES.md) - Implementation patterns and examples
+- [`IMPLEMENTATION_CHECKLIST.md`](./IMPLEMENTATION_CHECKLIST.md) - Step-by-step quality assurance
+- [`DESIGN_SYSTEM_SUMMARY.md`](./DESIGN_SYSTEM_SUMMARY.md) - Executive summary
+
+### Component Documentation
+
+Each component includes:
+- **Usage Examples** - Real-world implementation patterns
+- **Accessibility Features** - ARIA attributes and keyboard support
+- **ADHD Considerations** - Cognitive load and emotional regulation
+- **Performance Notes** - Optimization recommendations
+
+## 🤝 Contributing
+
+### Development Guidelines
+
+1. **Follow ADHD-Friendly Principles** - Review design system guidelines
+2. **Test Accessibility** - Ensure WCAG compliance
+3. **Consider Cognitive Load** - Design for attention differences
+4. **Gather User Feedback** - Include ADHD community input
+
+### Code Standards
+
+- **TypeScript** - Full type safety
+- **ESLint** - Consistent code style
+- **Prettier** - Automatic formatting
+- **Jest** - Unit and integration tests
+
+### Pull Request Process
+
+1. **Design Review** - Validate against ADHD-friendly principles
+2. **Accessibility Audit** - Test with screen readers and keyboard
+3. **Performance Check** - Verify bundle size and loading times
+4. **User Testing** - Include ADHD community feedback
+
+## 📊 Success Metrics
+
+### Accessibility Metrics
+
+- **WCAG Compliance** - AA level achieved, AAA preferred
+- **Keyboard Navigation** - 100% feature parity
+- **Screen Reader Support** - Complete compatibility
+- **Performance** - Core Web Vitals in green zone
+
+### ADHD-Specific Metrics
+
+- **Task Completion Rate** - Monitor cognitive load impact
+- **Session Duration** - Sustained engagement measurement
+- **Error Recovery** - Time to correct mistakes
+- **User Satisfaction** - Qualitative feedback from ADHD community
+
+## 🏆 Conclusion
+
+The Focus Flock design system demonstrates how technology can be thoughtfully designed to support neurodivergent users while creating beautiful, engaging experiences for everyone. By prioritizing accessibility, cognitive load reduction, and social connection, we create an environment where users with ADHD can thrive.
+
+**Key Success Factors:**
+- Consistent use of design tokens across all components
+- Regular testing with ADHD community members
+- Continuous accessibility auditing and improvement
+- Performance optimization for sustained engagement
+- Clear documentation for team consistency
+
+The Focus Flock design system serves as a model for how technology can be thoughtfully designed to support neurodivergent users while creating beautiful, engaging experiences for everyone.
 
 ---
 
-**Built with ❤️ for the neurodivergent community**
-
-*Making productivity accessible, social, and ADHD-friendly* 
+**Built with ❤️ for the ADHD community** 

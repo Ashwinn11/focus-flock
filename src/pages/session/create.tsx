@@ -62,10 +62,10 @@ const CreateSessionPage: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-display font-bold text-gray-900 mb-4">
+          <h1 className="text-display font-bold text-text-primary mb-4">
             Create Your Focus Session
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-text-secondary max-w-3xl mx-auto">
             Set up a body doubling session that matches your energy and goals. 
             Your flock will find you!
           </p>
@@ -90,7 +90,7 @@ const CreateSessionPage: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <div className="bg-white rounded-2xl p-8 shadow-md">
+          <div className="bg-bg-secondary rounded-2xl p-8 shadow-md">
             <h3 className="text-h2 font-semibold mb-6 text-center">
               💡 Tips for Great Sessions
             </h3>
@@ -101,7 +101,7 @@ const CreateSessionPage: React.FC = () => {
                   <div className="text-2xl">🎯</div>
                   <div>
                     <h4 className="font-semibold mb-1">Be Specific</h4>
-                    <p className="text-small text-gray-600">
+                    <p className="text-small text-text-secondary">
                       Clear session titles help attract the right study buddies
                     </p>
                   </div>
@@ -111,7 +111,7 @@ const CreateSessionPage: React.FC = () => {
                   <div className="text-2xl">⚡</div>
                   <div>
                     <h4 className="font-semibold mb-1">Match Your Energy</h4>
-                    <p className="text-small text-gray-600">
+                    <p className="text-small text-text-secondary">
                       Choose the energy level that feels right for you today
                     </p>
                   </div>
@@ -123,7 +123,7 @@ const CreateSessionPage: React.FC = () => {
                   <div className="text-2xl">👥</div>
                   <div>
                     <h4 className="font-semibold mb-1">Keep It Small</h4>
-                    <p className="text-small text-gray-600">
+                    <p className="text-small text-text-secondary">
                       Smaller groups create better connections and accountability
                     </p>
                   </div>
@@ -133,7 +133,7 @@ const CreateSessionPage: React.FC = () => {
                   <div className="text-2xl">💚</div>
                   <div>
                     <h4 className="font-semibold mb-1">Stay Supportive</h4>
-                    <p className="text-small text-gray-600">
+                    <p className="text-small text-text-secondary">
                       Create a shame-free environment where everyone can thrive
                     </p>
                   </div>

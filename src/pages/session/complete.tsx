@@ -66,10 +66,10 @@ const SessionCompletePage: React.FC = () => {
               <span className="text-4xl text-white">🎉</span>
             </motion.div>
             
-            <h1 className="text-display font-bold text-gray-900 mb-4">
+            <h1 className="text-display font-bold text-text-primary mb-4">
               Session Complete!
             </h1>
-            <p className="text-xl text-gray-700 max-w-2xl mx-auto font-medium">
+            <p className="text-xl text-text-secondary max-w-2xl mx-auto font-medium">
               Amazing work! You just completed a {sessionData.duration}-minute focus session 
               with your study flock. Time to celebrate! 🎊
             </p>
@@ -82,7 +82,7 @@ const SessionCompletePage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <Card className="bg-white/90 backdrop-blur-sm">
+            <Card variant="success">
               <CardHeader>
                 <CardTitle className="text-center flex items-center justify-center space-x-2">
                   <span className="text-2xl">📊</span>
@@ -95,7 +95,7 @@ const SessionCompletePage: React.FC = () => {
                     <div className="text-4xl font-bold mb-2" style={{ color: 'var(--community-teal)' }}>
                       {sessionData.focusTime}m
                     </div>
-                    <p className="text-body text-gray-600 font-medium">Focus Time</p>
+                    <p className="text-body text-text-secondary font-medium">Focus Time</p>
                     <ProgressBar 
                       progress={(sessionData.focusTime / sessionData.duration) * 100}
                       variant="celebration"
@@ -108,7 +108,7 @@ const SessionCompletePage: React.FC = () => {
                     <div className="text-4xl font-bold mb-2" style={{ color: 'var(--focus-purple)' }}>
                       {sessionData.participants}
                     </div>
-                    <p className="text-body text-gray-600 font-medium">Study Buddies</p>
+                    <p className="text-body text-text-secondary font-medium">Study Buddies</p>
                     <div className="flex justify-center space-x-1 mt-3">
                       {[...Array(sessionData.participants)].map((_, i) => (
                         <div 
@@ -125,7 +125,7 @@ const SessionCompletePage: React.FC = () => {
                     <div className="text-4xl font-bold mb-2" style={{ color: 'var(--dopamine-yellow)' }}>
                       {sessionData.completionRate}%
                     </div>
-                    <p className="text-body text-gray-600 font-medium">Completion Rate</p>
+                    <p className="text-body text-text-secondary font-medium">Completion Rate</p>
                     <ProgressBar 
                       progress={sessionData.completionRate}
                       variant="celebration"
@@ -145,7 +145,7 @@ const SessionCompletePage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <Card className="bg-gradient-to-br from-focus-purple/5 to-community-teal/5">
+            <Card variant="accent">
               <CardHeader>
                 <CardTitle className="text-center flex items-center justify-center space-x-2">
                   <span className="text-2xl">🏆</span>
@@ -157,7 +157,7 @@ const SessionCompletePage: React.FC = () => {
                   {achievements.map((achievement, index) => (
                     <motion.div
                       key={achievement.title}
-                      className="text-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-200"
+                      className="text-center p-6 bg-bg-secondary rounded-xl shadow-md hover:shadow-lg transition-all duration-200"
                       initial={false}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.6 + index * 0.1 }}
@@ -165,7 +165,7 @@ const SessionCompletePage: React.FC = () => {
                     >
                       <div className="text-4xl mb-3">{achievement.icon}</div>
                       <h4 className="font-bold mb-2">{achievement.title}</h4>
-                      <p className="text-sm text-gray-600">{achievement.description}</p>
+                      <p className="text-sm text-text-secondary">{achievement.description}</p>
                     </motion.div>
                   ))}
                 </div>
@@ -216,14 +216,14 @@ const SessionCompletePage: React.FC = () => {
               onClick={() => setShowShareOptions(false)}
             >
               <motion.div
-                className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl"
+                className="bg-bg-secondary rounded-2xl p-8 max-w-md w-full shadow-2xl"
                 initial={false}
                 animate={{ scale: 1, opacity: 1 }}
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="text-center mb-6">
                   <h3 className="text-h2 font-bold mb-2">Share Your Achievement</h3>
-                  <p className="text-body text-gray-600">
+                  <p className="text-body text-text-secondary">
                     Let your friends know about your focus session success!
                   </p>
                 </div>

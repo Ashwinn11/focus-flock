@@ -25,9 +25,15 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className }) => {
     
     if (newTheme === 'auto') {
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      root.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+      if (prefersDark) {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
+      }
+    } else if (newTheme === 'dark') {
+      root.classList.add('dark');
     } else {
-      root.setAttribute('data-theme', newTheme);
+      root.classList.remove('dark');
     }
     
     localStorage.setItem('theme', newTheme);
@@ -47,23 +53,23 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className }) => {
   if (!mounted) return null;
 
   return (
-    <div className={clsx('flex items-center space-x-1 bg-bg-tertiary rounded-lg p-1', className)}>
+    <div className={clsx('flex items-center bg-bg-tertiary rounded-md p-0.5', className)}>
       {themeOptions.map((option) => (
         <motion.button
           key={option.value}
           onClick={() => handleThemeChange(option.value as Theme)}
           className={clsx(
-            'flex items-center space-x-2 px-3 py-2 rounded-md transition-all duration-200 text-sm font-medium',
+            'flex items-center justify-center w-8 h-8 rounded-md transition-all duration-200 text-xs',
             theme === option.value
               ? 'bg-bg-secondary text-text-primary shadow-sm border border-border-subtle'
               : 'text-text-secondary hover:text-text-primary hover:bg-bg-secondary/50'
           )}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           aria-label={`Switch to ${option.label} theme`}
+          title={option.label}
         >
-          <span>{option.icon}</span>
-          <span>{option.label}</span>
+          <span className="text-xs">{option.icon}</span>
         </motion.button>
       ))}
     </div>

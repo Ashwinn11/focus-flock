@@ -88,7 +88,7 @@ const CommunityPage: React.FC = () => {
             <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-muted-blue to-soft-sage flex items-center justify-center shadow-xl">
               <span className="text-4xl text-white">🤝</span>
             </div>
-            <h1 className="text-display font-bold text-gray-900 mb-4">
+            <h1 className="text-display font-bold text-text-primary mb-4">
               Your Focus Community
             </h1>
             <p className="text-xl text-text-secondary max-w-3xl mx-auto font-medium">
@@ -104,7 +104,7 @@ const CommunityPage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <Card className="bg-bg-secondary border border-border-subtle">
+            <Card variant="primary">
               <CardContent>
                 <div className="flex flex-wrap gap-2">
                   {sections.map((section) => (
@@ -149,7 +149,7 @@ const CommunityPage: React.FC = () => {
                           <div className={clsx('text-3xl font-bold mb-1', stat.color)}>
                             {stat.value}
                           </div>
-                          <div className="text-small text-gray-600 font-medium">
+                          <div className="text-small text-text-secondary font-medium">
                             {stat.icon} {stat.label}
                           </div>
                         </motion.div>
@@ -164,7 +164,7 @@ const CommunityPage: React.FC = () => {
                     <CardContent className="py-8">
                       <div className="text-4xl mb-4">🔍</div>
                       <h3 className="font-bold mb-2">Find Study Buddies</h3>
-                      <p className="text-small text-gray-600">
+                      <p className="text-small text-text-secondary">
                         Connect with 1-on-1 accountability partners
                       </p>
                     </CardContent>
@@ -174,7 +174,7 @@ const CommunityPage: React.FC = () => {
                     <CardContent className="py-8">
                       <div className="text-4xl mb-4">👥</div>
                       <h3 className="font-bold mb-2">Join Study Groups</h3>
-                      <p className="text-small text-gray-600">
+                      <p className="text-small text-text-secondary">
                         Collaborate with like-minded learners
                       </p>
                     </CardContent>
@@ -184,7 +184,7 @@ const CommunityPage: React.FC = () => {
                     <CardContent className="py-8">
                       <div className="text-4xl mb-4">💬</div>
                       <h3 className="font-bold mb-2">Community Forum</h3>
-                      <p className="text-small text-gray-600">
+                      <p className="text-small text-text-secondary">
                         Share tips and support each other
                       </p>
                     </CardContent>
@@ -194,7 +194,7 @@ const CommunityPage: React.FC = () => {
                     <CardContent className="py-8">
                       <div className="text-4xl mb-4">🌐</div>
                       <h3 className="font-bold mb-2">Social Feed</h3>
-                      <p className="text-small text-gray-600">
+                      <p className="text-small text-text-secondary">
                         See your friends' achievements
                       </p>
                     </CardContent>

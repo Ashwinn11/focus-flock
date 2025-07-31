@@ -1,399 +1,421 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import Head from 'next/head';
+import Layout from '@/components/Layout';
 import Button from '@/components/Button';
-import Card, { CardHeader, CardTitle, CardSubtitle, CardContent } from '@/components/Card';
-import ProgressBar, { ProgressGarden } from '@/components/ProgressBar';
+import Card, { CardHeader, CardTitle, CardSubtitle, CardContent, CardFooter } from '@/components/Card';
 import EnergySelector from '@/components/EnergySelector';
+import ProgressBar, { ProgressGarden } from '@/components/ProgressBar';
 import { EnergyLevel } from '@/types';
 
+/**
+ * Demo page showcasing ADHD-friendly components
+ * 
+ * This page demonstrates:
+ * - All button variants with proper accessibility
+ * - Card system with different content types
+ * - Energy selector with visual feedback
+ * - Progress indicators with milestones
+ * - Layout and navigation patterns
+ * - Cognitive load management techniques
+ */
 const DemoPage: React.FC = () => {
   const [selectedEnergy, setSelectedEnergy] = useState<EnergyLevel | null>(null);
-  const [progress, setProgress] = useState(0);
+  const [sessionProgress, setSessionProgress] = useState(65);
   const [showCelebration, setShowCelebration] = useState(false);
 
-  const handleProgressUpdate = () => {
-    const newProgress = Math.min(100, progress + 25);
-    setProgress(newProgress);
-    
-    if (newProgress === 100) {
-      setShowCelebration(true);
-      setTimeout(() => setShowCelebration(false), 3000);
-    }
+  const gardenDays: ('bloom' | 'sprout' | 'seed' | 'empty')[] = ['bloom', 'sprout', 'bloom', 'seed', 'empty', 'sprout', 'bloom'];
+
+  const handleCompleteSession = () => {
+    setSessionProgress(100);
+    setShowCelebration(true);
+    setTimeout(() => setShowCelebration(false), 3000);
   };
 
-  const gardenDays = ['bloom', 'bloom', 'sprout', 'seed', 'empty', 'empty', 'empty'];
-
   return (
-    <>
-      <Head>
-        <title>Focus Flock Demo - ADHD-Friendly Design System</title>
-        <meta name="description" content="Experience the ADHD-friendly design system and core features" />
-      </Head>
-
-    <div className="min-h-screen py-12" style={{ background: 'linear-gradient(135deg, var(--soft-lavender) 0%, var(--mint-cream) 100%)' }}>
-    <div className="min-h-screen py-12 bg-gradient-to-br from-soft-cream to-muted-blue-light">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          className="text-center mb-12"
-          initial={false}
+    <Layout>
+      <div className="container mx-auto px-4 py-8 space-y-12">
+        {/* Hero Section */}
+        <motion.section 
+          className="text-center space-y-6"
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
         >
-          <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-muted-blue to-soft-sage flex items-center justify-center shadow-xl">
-            <span className="text-4xl text-white">🎨</span>
-          </div>
-          <h1 className="text-display font-bold text-gray-900 mb-6">
-            Focus Flock MVP Demo
+          <h1 className="text-display font-bold text-text-primary">
+            ADHD-Friendly Design System
           </h1>
-          <p className="text-xl text-text-secondary max-w-3xl mx-auto font-medium">
-            Experience the ADHD-friendly design system and core features
+          <p className="text-body text-text-secondary max-w-2xl mx-auto">
+            Experience how thoughtful design can support neurodivergent users while creating 
+            beautiful, accessible experiences for everyone.
           </p>
-        </motion.div>
+        </motion.section>
 
-        {/* Component Showcase */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-          {/* Energy Selector Demo */}
-          <motion.div
-            initial={false}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <Card className="bg-white/90 backdrop-blur-sm border-white/50">
+        {/* Button Showcase */}
+        <motion.section 
+          className="space-y-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          <div className="text-center">
+            <h2 className="text-h1 font-semibold mb-4 text-text-primary">Button Components</h2>
+            <p className="text-body text-text-secondary">
+              High-contrast variants with haptic feedback and generous touch targets
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Primary Actions */}
+            <Card variant="primary">
               <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <span className="text-2xl">⚡</span>
-                  <span>Energy Matching</span>
-                </CardTitle>
-                <CardSubtitle>Select your energy level to match with study buddies</CardSubtitle>
+                <CardTitle>Primary Actions</CardTitle>
+                <CardSubtitle>Main call-to-action buttons</CardSubtitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <Button variant="primary" size="lg" fullWidth>
+                  Start Focus Session
+                </Button>
+                <Button variant="primary" loading fullWidth>
+                  Connecting...
+                </Button>
+                <Button variant="primary" disabled fullWidth>
+                  Session Full
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Energy-themed Buttons */}
+            <Card variant="accent">
+              <CardHeader>
+                <CardTitle>Energy-themed Actions</CardTitle>
+                <CardSubtitle>Contextual energy levels</CardSubtitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <Button variant="teal" fullWidth>
+                  Join Community
+                </Button>
+                <Button variant="celebration" fullWidth>
+                  🎉 Celebrate Achievement
+                </Button>
+                <Button variant="coral" fullWidth>
+                  Need Break
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Semantic Variants */}
+            <Card variant="info">
+              <CardHeader>
+                <CardTitle>Semantic Actions</CardTitle>
+                <CardSubtitle>Clear meaning through color</CardSubtitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <Button variant="success" fullWidth>
+                  ✓ Complete Task
+                </Button>
+                <Button variant="warning" fullWidth>
+                  ⚠ Attention Needed
+                </Button>
+                <Button variant="info" fullWidth>
+                  ℹ Learn More
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </motion.section>
+
+        {/* Card System Showcase */}
+        <motion.section 
+          className="space-y-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <div className="text-center">
+            <h2 className="text-h1 font-semibold mb-4 text-text-primary">Card System</h2>
+            <p className="text-body text-text-secondary">
+              Clear visual hierarchy with consistent spacing and typography
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Information Card */}
+            <Card variant="primary" interactive onClick={() => alert('Card clicked!')}>
+              <CardHeader>
+                <CardTitle>Study Session Available</CardTitle>
+                <CardSubtitle>Mathematics • 2 hours</CardSubtitle>
               </CardHeader>
               <CardContent>
-                <EnergySelector
-                  selectedEnergy={selectedEnergy}
-                  onEnergySelect={setSelectedEnergy}
+                <p className="text-body text-text-secondary">
+                  Join Sarah and Mike for focused math study. High energy level preferred.
+                </p>
+              </CardContent>
+              <CardFooter>
+                <Button variant="primary" size="sm">Join Session</Button>
+                <Button variant="ghost" size="sm">View Details</Button>
+              </CardFooter>
+            </Card>
+
+            {/* Achievement Card */}
+            <Card variant="achievement">
+              <div className="text-center">
+                <div className="text-6xl mb-4">🏆</div>
+                <h3 className="text-h2 font-bold mb-2">Session Complete!</h3>
+                <p className="text-body">You studied for 45 minutes. Amazing focus!</p>
+              </div>
+            </Card>
+
+            {/* Celebration Card */}
+            <Card variant="celebration">
+              <div className="text-center">
+                <div className="text-4xl mb-2">⚡</div>
+                <h3 className="text-h3 font-bold">High Energy Session</h3>
+                <p className="text-small">3 participants active</p>
+              </div>
+            </Card>
+          </div>
+        </motion.section>
+
+        {/* Energy Selector Demo */}
+        <motion.section 
+          className="space-y-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <div className="text-center">
+            <h2 className="text-h1 font-semibold mb-4 text-text-primary">Energy Selector</h2>
+            <p className="text-body text-text-secondary">
+              Match with study buddies based on your current energy level
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <EnergySelector
+              selectedEnergy={selectedEnergy}
+              onEnergySelect={setSelectedEnergy}
+            />
+          </div>
+
+          {selectedEnergy && (
+            <motion.div
+              className="text-center"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4 }}
+            >
+              <Card variant="info" className="max-w-md mx-auto">
+                <p className="text-body font-medium">
+                  Great choice! You'll be matched with study buddies who have{' '}
+                  <span className="font-bold text-primary-blue">
+                    {selectedEnergy.toLowerCase()}
+                  </span>{' '}
+                  energy levels.
+                </p>
+              </Card>
+            </motion.div>
+          )}
+        </motion.section>
+
+        {/* Progress Indicators */}
+        <motion.section 
+          className="space-y-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <div className="text-center">
+            <h2 className="text-h1 font-semibold mb-4 text-text-primary">Progress Tracking</h2>
+            <p className="text-body text-text-secondary">
+              Visual feedback with milestone celebrations and gentle animations
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Linear Progress */}
+            <Card variant="secondary">
+              <CardHeader>
+                <CardTitle>Session Progress</CardTitle>
+                <CardSubtitle>Current study session</CardSubtitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <ProgressBar 
+                  progress={sessionProgress} 
+                  variant="session" 
+                  showLabel 
+                  label="Study Progress" 
+                />
+                <div className="flex gap-2">
+                  <Button 
+                    variant="primary" 
+                    size="sm"
+                    onClick={() => setSessionProgress(Math.min(100, sessionProgress + 10))}
+                  >
+                    +10%
+                  </Button>
+                  <Button 
+                    variant="celebration" 
+                    size="sm"
+                    onClick={handleCompleteSession}
+                  >
+                    Complete Session
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Progress Garden */}
+            <Card variant="accent">
+              <CardHeader>
+                <CardTitle>Weekly Progress</CardTitle>
+                <CardSubtitle>Visual garden metaphor</CardSubtitle>
+              </CardHeader>
+              <CardContent>
+                <ProgressGarden 
+                  days={gardenDays} 
+                  className="my-4"
+                  aria-label="Weekly study progress garden"
                 />
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
+        </motion.section>
 
-          {/* Progress Demo */}
-          <motion.div
-            initial={false}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <Card className="bg-white/90 backdrop-blur-sm border-white/50">
+        {/* Accessibility Features */}
+        <motion.section 
+          className="space-y-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        >
+          <div className="text-center">
+            <h2 className="text-h1 font-semibold mb-4 text-text-primary">Accessibility Features</h2>
+            <p className="text-body text-text-secondary">
+              Built-in support for screen readers, keyboard navigation, and high contrast
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card variant="info">
               <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <span className="text-2xl">📊</span>
-                  <span>Progress Tracking</span>
-                </CardTitle>
-                <CardSubtitle>Dopamine-driven progress visualization</CardSubtitle>
+                <CardTitle>Keyboard Navigation</CardTitle>
+                <CardSubtitle>Full keyboard support</CardSubtitle>
               </CardHeader>
-              <CardContent className="space-y-8">
-                <div>
-                  <h4 className="text-h3 font-bold mb-4 flex items-center space-x-2">
-                    <span className="text-xl">📈</span>
-                    <span>Progress Bar</span>
-                  </h4>
-                  <ProgressBar
-                    progress={progress}
-                    variant="celebration"
-                    showLabel
-                    label="Session Progress"
-                  />
-                  <Button
-                    onClick={handleProgressUpdate}
-                    disabled={progress >= 100}
-                    className="mt-6"
-                    variant={progress >= 100 ? "teal" : "primary"}
-                  >
-                    {progress >= 100 ? "🎉 Complete!" : "📈 Update Progress"}
+              <CardContent>
+                <p className="text-body text-text-secondary mb-4">
+                  All interactive elements support keyboard navigation. Try using Tab, Enter, and Space keys.
+                </p>
+                <div className="space-y-2">
+                  <Button variant="primary" size="sm" aria-describedby="keyboard-help">
+                    Focus me (Tab)
                   </Button>
-                </div>
-
-                <div>
-                  <h4 className="text-h3 font-bold mb-4 flex items-center space-x-2">
-                    <span className="text-xl">🌱</span>
-                    <span>Progress Garden</span>
-                  </h4>
-                  <p className="text-body text-gray-600 mb-4 font-medium">
-                    ADHD-friendly alternative to linear streaks
-                  </p>
-                  <ProgressGarden days={gardenDays} />
+                  <div id="keyboard-help" className="sr-only">
+                    Press Enter or Space to activate this button
+                  </div>
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
-        </div>
 
-        {/* Button Showcase */}
-        <motion.div
-          className="mb-16"
-          initial={false}
+            <Card variant="success">
+              <CardHeader>
+                <CardTitle>Screen Reader Support</CardTitle>
+                <CardSubtitle>Comprehensive ARIA labels</CardSubtitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-body text-text-secondary mb-4">
+                  All components include proper ARIA attributes for screen reader compatibility.
+                </p>
+                <Button 
+                  variant="success" 
+                  size="sm"
+                  aria-label="Complete task"
+                  aria-describedby="sr-help"
+                >
+                  ✓ Complete Task
+                </Button>
+                <div id="sr-help" className="sr-only">
+                  This button marks the current task as complete
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </motion.section>
+
+        {/* Cognitive Load Management */}
+        <motion.section 
+          className="space-y-8"
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
         >
-          <Card className="bg-white/90 backdrop-blur-sm border-white/50">
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <span className="text-2xl">🎯</span>
-                <span>Button Components</span>
-              </CardTitle>
-              <CardSubtitle>ADHD-friendly buttons with celebration animations</CardSubtitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <Button variant="primary" size="md">
-                  🎯 Primary
-                </Button>
-                <Button variant="coral" size="md">
-                  👥 Community
-                </Button>
-                <Button variant="teal" size="md">
-                  📈 Growth
-                </Button>
-                <Button variant="celebration" size="md">
-                  🎉 Celebrate!
-                </Button>
-              </div>
-              
-              <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <Button variant="secondary" size="lg" fullWidth>
-                  📋 Secondary Action
-                </Button>
-                <Button variant="ghost" size="lg" fullWidth>
-                  👻 Ghost Button
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
+          <div className="text-center">
+            <h2 className="text-h1 font-semibold mb-4 text-text-primary">Cognitive Load Management</h2>
+            <p className="text-body text-text-secondary">
+              Progressive disclosure, clear hierarchy, and gentle animations
+            </p>
+          </div>
 
-        {/* Card Showcase */}
-        <motion.div
-          className="mb-16"
-          initial={false}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-        >
-          <Card className="bg-white/90 backdrop-blur-sm border-white/50">
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <span className="text-2xl">🃏</span>
-                <span>Card Components</span>
-              </CardTitle>
-              <CardSubtitle>Different card variants for various use cases</CardSubtitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <Card variant="default" interactive>
-                  <CardHeader>
-                    <CardTitle className="flex items-center space-x-2">
-                      <span className="text-xl">📄</span>
-                      <span>Default Card</span>
-                    </CardTitle>
-                    <CardSubtitle>Standard content card</CardSubtitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-body text-gray-600 font-medium">
-                      This is a standard card with subtle hover effects and clean design.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card variant="session" interactive>
-                  <CardHeader>
-                    <CardTitle className="flex items-center space-x-2 text-white">
-                      <span className="text-xl">🎥</span>
-                      <span>Session Card</span>
-                    </CardTitle>
-                    <CardSubtitle>Active body doubling session</CardSubtitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-white/90 font-medium">
-                      Special styling for active sessions with gradient background and celebration effects.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card variant="achievement" interactive>
-                  <CardHeader>
-                    <CardTitle className="flex items-center space-x-2 text-white">
-                      <span className="text-xl">🏆</span>
-                      <span>Achievement Card</span>
-                    </CardTitle>
-                    <CardSubtitle>Celebration and milestone</CardSubtitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-white/90 font-medium">
-                      Bright, celebratory styling for achievements and milestones.
-                    </p>
-                  </CardContent>
-                </Card>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card variant="primary">
+              <div className="text-center">
+                <div className="text-4xl mb-4">🎯</div>
+                <h3 className="text-h3 font-bold mb-2">Single Focus</h3>
+                <p className="text-small text-text-secondary">
+                  One primary action per screen to reduce decision fatigue
+                </p>
               </div>
-            </CardContent>
-          </Card>
-        </motion.div>
+            </Card>
+
+            <Card variant="accent">
+              <div className="text-center">
+                <div className="text-4xl mb-4">🌱</div>
+                <h3 className="text-h3 font-bold mb-2">Progressive Disclosure</h3>
+                <p className="text-small text-text-secondary">
+                  Complex workflows broken into digestible steps
+                </p>
+              </div>
+            </Card>
+
+            <Card variant="success">
+              <div className="text-center">
+                <div className="text-4xl mb-4">🎨</div>
+                <h3 className="text-h3 font-bold mb-2">Visual Hierarchy</h3>
+                <p className="text-small text-text-secondary">
+                  Clear typography and spacing guide attention
+                </p>
+              </div>
+            </Card>
+          </div>
+        </motion.section>
 
         {/* Celebration Demo */}
         {showCelebration && (
           <motion.div
-            className="fixed inset-0 flex items-center justify-center z-50"
-            initial={false}
+            className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+            initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <div className="bg-black/60 absolute inset-0 backdrop-blur-sm" />
             <motion.div
-              className="bg-white rounded-2xl p-10 text-center max-w-md mx-4 shadow-2xl border border-white/50"
-              initial={false}
-              animate={{ scale: 1, rotate: 0 }}
-              transition={{ type: "spring", stiffness: 200, damping: 20 }}
+              className="bg-bg-secondary p-8 rounded-2xl text-center max-w-md mx-4"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
             >
-              <motion.div 
-                className="text-8xl mb-6"
-                animate={{ rotate: [0, 10, -10, 0] }}
-                transition={{ duration: 0.5, repeat: 2 }}
-              >
-                🎉
-              </motion.div>
-              <h3 className="text-h1 font-bold text-gray-900 mb-4">
-                Session Complete!
-              </h3>
-              <p className="text-body text-gray-600 mb-8 font-medium">
-                Great job staying focused! You've earned a celebration moment.
+              <div className="text-6xl mb-4">🎉</div>
+              <h2 className="text-h2 font-bold mb-2">Session Complete!</h2>
+              <p className="text-body text-text-secondary mb-6">
+                Great job staying focused! You've completed your study session.
               </p>
-              <Button
-                variant="celebration"
-                size="lg"
-                onClick={() => setShowCelebration(false)}
-              >
-                ✨ Continue
+              <Button variant="celebration" onClick={() => setShowCelebration(false)}>
+                Continue
               </Button>
             </motion.div>
           </motion.div>
         )}
-
-        {/* Features Overview */}
-        <motion.div
-          className="mb-16"
-          initial={false}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.0 }}
-        >
-          <Card className="bg-white/90 backdrop-blur-sm border-white/50">
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <span className="text-2xl">🧠</span>
-                <span>ADHD-Friendly Features</span>
-              </CardTitle>
-              <CardSubtitle>Key design principles implemented in this MVP</CardSubtitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-dopamine-yellow to-flock-coral flex items-center justify-center text-xl shadow-md">
-                      🎯
-                    </div>
-                    <div>
-                      <h4 className="text-h3 font-bold mb-2">Dopamine-Driven Rewards</h4>
-                      <p className="text-body text-gray-600 font-medium">
-                        Immediate feedback and celebration animations that provide positive reinforcement
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-community-teal to-focus-purple flex items-center justify-center text-xl shadow-md">
-                      💚
-                    </div>
-                    <div>
-                      <h4 className="text-h3 font-bold mb-2">Shame-Free Environment</h4>
-                      <p className="text-body text-gray-600 font-medium">
-                        No failure language, gentle redirects, and supportive messaging
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-flock-coral to-dopamine-yellow flex items-center justify-center text-xl shadow-md">
-                      👁️
-                    </div>
-                    <div>
-                      <h4 className="text-h3 font-bold mb-2">Clear Visual Hierarchy</h4>
-                      <p className="text-body text-gray-600 font-medium">
-                        Information architecture designed for attention differences
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-focus-purple to-community-teal flex items-center justify-center text-xl shadow-md">
-                      🎨
-                    </div>
-                    <div>
-                      <h4 className="text-h3 font-bold mb-2">Accessibility First</h4>
-                      <p className="text-body text-gray-600 font-medium">
-                        WCAG 2.1 AA compliance with high contrast and reduced motion support
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
-
-        {/* CTA */}
-        <motion.div
-          className="text-center"
-          initial={false}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-        >
-          <Card className="text-white border-none" style={{ background: 'linear-gradient(135deg, var(--focus-purple) 0%, var(--community-teal) 100%)' }}>
-            <CardHeader>
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                <span className="text-3xl">🚀</span>
-              </div>
-              <CardTitle className="text-white">Ready to Experience Focus Flock?</CardTitle>
-              <CardSubtitle className="text-white/90">
-                This MVP demonstrates the core design principles and user experience
-              </CardSubtitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <Button
-                  variant="celebration"
-                  size="lg"
-                  onClick={() => window.location.href = '/'}
-                  className="shadow-2xl"
-                >
-                  🚀 Back to Home
-                </Button>
-                <Button
-                  variant="secondary"
-                  size="lg"
-                  className="bg-white/20 backdrop-blur-sm text-white border-white/30 hover:bg-white/30"
-                  onClick={() => window.open('https://github.com/focus-flock', '_blank')}
-                >
-                  💻 View Source
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
       </div>
-    </div>
-    </>
+    </Layout>
   );
 };
 
 export default DemoPage; 
-  )
-}

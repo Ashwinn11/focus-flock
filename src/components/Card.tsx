@@ -2,9 +2,32 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { clsx } from 'clsx';
 
+/**
+ * Card component optimized for ADHD users
+ * 
+ * Features:
+ * - Clear visual hierarchy with proper heading structure
+ * - High contrast variants for different content types
+ * - Interactive cards with keyboard navigation
+ * - Consistent spacing and typography
+ * - Accessibility support for screen readers
+ * 
+ * @example
+ * ```tsx
+ * <Card variant="primary" interactive onClick={handleClick}>
+ *   <CardHeader>
+ *     <CardTitle>Study Session Available</CardTitle>
+ *     <CardSubtitle>Mathematics • 2 hours</CardSubtitle>
+ *   </CardHeader>
+ *   <CardContent>
+ *     <p>Join Sarah and Mike for focused math study.</p>
+ *   </CardContent>
+ * </Card>
+ * ```
+ */
 interface CardProps {
   children: React.ReactNode;
-  variant?: 'default' | 'session' | 'achievement' | 'celebration';
+  variant?: 'default' | 'primary' | 'secondary' | 'accent' | 'success' | 'warning' | 'info' | 'session' | 'achievement' | 'celebration';
   interactive?: boolean;
   className?: string;
   onClick?: () => void;
@@ -27,6 +50,12 @@ const Card: React.FC<CardProps> = ({
   
   const variantClasses = {
     default: '',
+    primary: 'card-primary',
+    secondary: 'card-secondary', 
+    accent: 'card-accent',
+    success: 'card-success',
+    warning: 'card-warning',
+    info: 'card-info',
     session: 'session-card',
     achievement: 'achievement-card',
     celebration: 'celebration-card',
@@ -53,6 +82,13 @@ const Card: React.FC<CardProps> = ({
     }
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleClick();
+    }
+  };
+
   const motionProps = (onClick || interactive) && !disabled ? {
     whileHover: { scale: 1.02 },
     whileTap: { scale: 0.98 },
@@ -67,6 +103,7 @@ const Card: React.FC<CardProps> = ({
     <motion.div
       className={classes}
       onClick={onClick ? handleClick : undefined}
+      onKeyDown={onClick ? handleKeyDown : undefined}
       role={onClick ? 'button' : undefined}
       tabIndex={onClick ? 0 : undefined}
       aria-label={ariaLabel}
@@ -85,7 +122,7 @@ interface CardHeaderProps {
 }
 
 export const CardHeader: React.FC<CardHeaderProps> = ({ children, className }) => (
-  <div className={clsx('mb-6 pb-4 border-b border-gray-100', className)}>
+  <div className={clsx('mb-4 pb-3 border-b border-border-subtle', className)}>
     {children}
   </div>
 );
@@ -97,7 +134,7 @@ interface CardTitleProps {
 }
 
 export const CardTitle: React.FC<CardTitleProps> = ({ children, className }) => (
-  <h3 className={clsx('text-h3 font-semibold mb-2 text-charcoal', className)}>
+  <h3 className={clsx('text-h3 font-semibold mb-1 text-text-primary', className)}>
     {children}
   </h3>
 );
@@ -109,7 +146,7 @@ interface CardSubtitleProps {
 }
 
 export const CardSubtitle: React.FC<CardSubtitleProps> = ({ children, className }) => (
-  <p className={clsx('text-small text-text-secondary mb-0', className)}>
+  <p className={clsx('text-small text-text-tertiary font-medium opacity-85 mb-0', className)}>
     {children}
   </p>
 );
@@ -133,7 +170,7 @@ interface CardFooterProps {
 }
 
 export const CardFooter: React.FC<CardFooterProps> = ({ children, className }) => (
-  <div className={clsx('mt-6 pt-4 border-t border-border-subtle', className)}>
+  <div className={clsx('mt-4 pt-3 border-t border-border-subtle', className)}>
     {children}
   </div>
 );

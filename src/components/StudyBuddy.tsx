@@ -96,7 +96,7 @@ const StudyBuddy: React.FC<StudyBuddyProps> = ({
               )}
             </div>
             
-            <p className="text-small text-gray-600 mb-2">
+            <p className="text-small text-surface-variant mb-2">
               {getLastSeenText()}
             </p>
 
@@ -125,11 +125,11 @@ const StudyBuddy: React.FC<StudyBuddyProps> = ({
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="mt-4 pt-4 border-t border-gray-200 space-y-4"
+            className="mt-4 pt-4 border-t border-outline-variant space-y-4"
           >
             {/* Quick Message */}
             <div className="space-y-2">
-              <label className="block text-small font-medium text-gray-700">
+              <label className="block text-small font-medium text-text-secondary">
                 Send a quick message
               </label>
               <div className="flex space-x-2">
@@ -138,7 +138,7 @@ const StudyBuddy: React.FC<StudyBuddyProps> = ({
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Hey! Want to study together?"
-                  className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-focus-purple focus:border-transparent text-sm"
+                  className="flex-1 px-3 py-2 border border-outline rounded-lg focus:ring-2 focus:ring-focus-purple focus:border-transparent text-sm"
                   onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                 />
                 <Button
@@ -338,14 +338,14 @@ export const StudyBuddyFinder: React.FC<StudyBuddyFinderProps> = ({
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-body text-gray-600 mb-6">
+          <p className="text-body text-surface-variant mb-6">
             Connect with study partners who match your energy and goals for 1-on-1 accountability.
           </p>
 
           {/* Filters */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
             <div>
-              <label className="block text-small font-medium text-gray-700 mb-2">
+              <label className="block text-small font-medium text-text-secondary mb-2">
                 Energy Level
               </label>
               <select
@@ -354,7 +354,7 @@ export const StudyBuddyFinder: React.FC<StudyBuddyFinderProps> = ({
                   ...prev, 
                   energyLevel: e.target.value as EnergyLevel || null 
                 }))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-focus-purple focus:border-transparent"
+                className="w-full px-3 py-2 border border-outline rounded-lg focus:ring-2 focus:ring-focus-purple focus:border-transparent"
               >
                 <option value="">Any energy level</option>
                 <option value={EnergyLevel.HIGH}>⚡ High Energy</option>
@@ -365,7 +365,7 @@ export const StudyBuddyFinder: React.FC<StudyBuddyFinderProps> = ({
             </div>
 
             <div>
-              <label className="block text-small font-medium text-gray-700 mb-2">
+              <label className="block text-small font-medium text-text-secondary mb-2">
                 Session Type
               </label>
               <select
@@ -374,7 +374,7 @@ export const StudyBuddyFinder: React.FC<StudyBuddyFinderProps> = ({
                   ...prev, 
                   sessionType: e.target.value as SessionType || null 
                 }))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-focus-purple focus:border-transparent"
+                className="w-full px-3 py-2 border border-outline rounded-lg focus:ring-2 focus:ring-focus-purple focus:border-transparent"
               >
                 <option value="">Any session type</option>
                 <option value={SessionType.BODY_DOUBLING}>🤝 Body Doubling</option>
@@ -393,9 +393,9 @@ export const StudyBuddyFinder: React.FC<StudyBuddyFinderProps> = ({
                     ...prev, 
                     onlineOnly: e.target.checked 
                   }))}
-                  className="rounded border-gray-300 text-focus-purple focus:ring-focus-purple"
+                  className="rounded border-outline text-focus-purple focus:ring-focus-purple"
                 />
-                <span className="text-small text-gray-700">Online only</span>
+                <span className="text-small text-text-secondary">Online only</span>
               </label>
             </div>
           </div>
@@ -430,7 +430,7 @@ export const StudyBuddyFinder: React.FC<StudyBuddyFinderProps> = ({
                 >
                   <span className="text-2xl text-white">🔍</span>
                 </motion.div>
-                <p className="text-body text-gray-600">
+                <p className="text-body text-surface-variant">
                   Analyzing compatibility and finding your perfect study matches...
                 </p>
               </div>
@@ -442,7 +442,7 @@ export const StudyBuddyFinder: React.FC<StudyBuddyFinderProps> = ({
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="p-4 border border-gray-200 rounded-lg hover:border-focus-purple transition-colors"
+                    className="p-4 border border-outline-variant rounded-lg hover:border-focus-purple transition-colors"
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-4">
@@ -462,7 +462,7 @@ export const StudyBuddyFinder: React.FC<StudyBuddyFinderProps> = ({
                               <span className="text-lg">{getEnergyEmoji(user.energyLevel)}</span>
                             )}
                           </div>
-                          <p className="text-small text-gray-600">
+                          <p className="text-small text-surface-variant">
                             {user.stats.totalSessions} sessions • {user.stats.currentStreak} day streak
                           </p>
                         </div>

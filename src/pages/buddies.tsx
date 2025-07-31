@@ -112,10 +112,10 @@ const BuddiesPage: React.FC = () => {
             <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-community-teal to-community-teal-light flex items-center justify-center shadow-xl">
               <span className="text-4xl text-white">🤝</span>
             </div>
-            <h1 className="text-display font-bold text-gray-900 mb-4">
+            <h1 className="text-display font-bold text-text-primary mb-4">
               Study Buddies
             </h1>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+            <p className="text-xl text-text-secondary max-w-3xl mx-auto">
               Build meaningful 1-on-1 connections with study partners who understand your goals and energy
             </p>
           </motion.div>
@@ -130,7 +130,7 @@ const BuddiesPage: React.FC = () => {
             >
               {/* Action Bar */}
               <div className="flex justify-between items-center">
-                <h2 className="text-h1 font-bold text-gray-900">
+                <h2 className="text-h1 font-bold text-text-primary">
                   Your Study Buddies ({currentBuddies.length})
                 </h2>
                 <Button
@@ -165,10 +165,10 @@ const BuddiesPage: React.FC = () => {
                   <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-community-teal to-community-teal-light flex items-center justify-center shadow-xl">
                     <span className="text-4xl text-white">🔍</span>
                   </div>
-                  <h3 className="text-h2 font-bold text-gray-900 mb-4">
+                  <h3 className="text-h2 font-bold text-text-primary mb-4">
                     No Study Buddies Yet
                   </h3>
-                  <p className="text-body text-gray-600 mb-8 max-w-md mx-auto">
+                  <p className="text-body text-text-secondary mb-8 max-w-md mx-auto">
                     Find your perfect study partner! Connect with someone who matches your energy and goals.
                   </p>
                   <Button

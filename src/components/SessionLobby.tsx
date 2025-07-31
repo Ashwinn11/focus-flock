@@ -150,7 +150,7 @@ const SessionLobby: React.FC<SessionLobbyProps> = ({
                           ? 'border-community-teal bg-community-teal/5'
                           : participant.userId !== currentUserId
                           ? 'border-community-teal bg-community-teal/5'
-                          : 'border-gray-200 bg-gray-50'
+                          : 'border-outline-variant bg-surface-dim'
                       )}
                     >
                       <div className="flex items-center space-x-3">
@@ -171,7 +171,7 @@ const SessionLobby: React.FC<SessionLobbyProps> = ({
                               </span>
                             )}
                           </div>
-                          <p className="text-small text-gray-600 capitalize">
+                          <p className="text-small text-surface-variant capitalize">
                             {participant.energyLevel} energy
                           </p>
                         </div>
@@ -190,16 +190,16 @@ const SessionLobby: React.FC<SessionLobbyProps> = ({
               </div>
 
               {/* Ready Status */}
-              <div className="mt-6 p-4 bg-gray-50 rounded-lg">
+              <div className="mt-6 p-4 bg-surface-dim rounded-lg">
                 <div className="flex items-center justify-between">
                   <div>
                     <h4 className="font-semibold">Ready to Focus?</h4>
-                    <p className="text-small text-gray-600">
+                    <p className="text-small text-surface-variant">
                       {readyCount} of {activeParticipants.length} participants ready
                     </p>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <div className="w-16 h-2 bg-gray-200 rounded-full overflow-hidden">
+                    <div className="w-16 h-2 bg-surface-container-high rounded-full overflow-hidden">
                       <motion.div
                         className="h-full bg-community-teal rounded-full"
                         initial={{ width: 0 }}
@@ -236,7 +236,7 @@ const SessionLobby: React.FC<SessionLobbyProps> = ({
               </motion.div>
               
               <h4 className="font-semibold mb-2">{getBreathingInstruction()}</h4>
-              <p className="text-small text-gray-600">
+              <p className="text-small text-surface-variant">
                 Take a moment to center yourself before we begin
               </p>
             </CardContent>
@@ -282,7 +282,7 @@ const SessionLobby: React.FC<SessionLobbyProps> = ({
                   )}
 
                   {isHost && !allReady && (
-                    <p className="text-small text-gray-600 text-center">
+                    <p className="text-small text-surface-variant text-center">
                       Waiting for all participants to be ready...
                     </p>
                   )}
@@ -300,10 +300,10 @@ const SessionLobby: React.FC<SessionLobbyProps> = ({
           </Card>
 
           {/* Session Tips */}
-          <Card className="bg-gradient-to-br from-focus-purple/5 to-community-teal/5">
+          <Card variant="primary">
             <CardContent>
               <h4 className="font-semibold mb-3">💡 Focus Tips</h4>
-              <ul className="space-y-2 text-small text-gray-600">
+              <ul className="space-y-2 text-small text-surface-variant">
                 <li>• Keep your camera on for better accountability</li>
                 <li>• Mute yourself unless you need to communicate</li>
                 <li>• Take breaks when you need them - no judgment!</li>

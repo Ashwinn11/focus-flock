@@ -49,7 +49,7 @@ const BreakTimer: React.FC<BreakTimerProps> = ({
   const progressPercentage = ((duration * 60 - timeRemaining) / (duration * 60)) * 100;
 
   return (
-    <Card className={clsx('bg-gradient-to-br from-flock-coral/10 to-dopamine-yellow/10', className)}>
+    <Card variant="warning" className={className}>
       <CardHeader>
         <CardTitle className="flex items-center space-x-2 text-center">
           <span className="text-2xl">☕</span>
@@ -69,7 +69,7 @@ const BreakTimer: React.FC<BreakTimerProps> = ({
           >
             {formatTime(timeRemaining)}
           </motion.div>
-          <p className="text-sm text-gray-600 font-medium">
+          <p className="text-sm text-surface-variant font-medium">
             Break time remaining
           </p>
         </div>
@@ -113,7 +113,7 @@ const BreakTimer: React.FC<BreakTimerProps> = ({
         {/* Break Activity Suggestion */}
         <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4">
           <h4 className="font-bold mb-2">{selectedActivity.title}</h4>
-          <p className="text-sm text-gray-600 mb-4">{selectedActivity.description}</p>
+          <p className="text-sm text-surface-variant mb-4">{selectedActivity.description}</p>
           
           {/* Activity Options */}
           <div className="flex flex-wrap gap-2 justify-center">
@@ -124,7 +124,7 @@ const BreakTimer: React.FC<BreakTimerProps> = ({
                   'p-2 rounded-lg text-lg transition-all duration-200',
                   selectedActivity.title === activity.title
                     ? 'bg-flock-coral text-white shadow-md'
-                    : 'bg-gray-100 hover:bg-gray-200'
+                    : 'bg-surface-container hover:bg-surface-container-high'
                 )}
                 onClick={() => setSelectedActivity(activity)}
                 whileHover={{ scale: 1.1 }}
@@ -138,7 +138,7 @@ const BreakTimer: React.FC<BreakTimerProps> = ({
         </div>
 
         {/* Early Return Option */}
-        <div className="pt-4 border-t border-gray-200">
+        <div className="pt-4 border-t border-outline-variant">
           <Button
             variant="teal"
             size="sm"

@@ -2,18 +2,51 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { clsx } from 'clsx';
 
-interface ButtonProps {
+/**
+ * Button component optimized for ADHD users
+ * 
+ * Features:
+ * - High contrast variants for clear visual hierarchy
+ * - Haptic feedback on mobile devices (30ms for ADHD-friendly)
+ * - Generous touch targets (40px minimum)
+ * - Loading states with accessibility support
+ * - Keyboard navigation support
+ * - All design system variants implemented
+ * 
+ * @example
+ * ```tsx
+ * <Button variant="primary" size="lg" onClick={handleClick}>
+ *   Start Focus Session
+ * </Button>
+ * ```
+ */
+export interface ButtonProps {
+  /** Button content */
   children: React.ReactNode;
-  variant?: 'primary' | 'secondary' | 'teal' | 'celebration' | 'coral' | 'ghost';
+  /** Visual variant affecting color and styling */
+  variant?: 'primary' | 'secondary' | 'ghost' | 'teal' | 'celebration' | 'coral' | 'accent' | 'success' | 'warning' | 'info';
+  /** Size affecting padding and font size */
   size?: 'sm' | 'md' | 'lg';
+  /** Disable interaction and show disabled styling */
   disabled?: boolean;
+  /** Show loading spinner and disable interaction */
   loading?: boolean;
+  /** Expand button to full width of container */
   fullWidth?: boolean;
+  /** Click event handler */
   onClick?: () => void;
+  /** Button type for form usage */
   type?: 'button' | 'submit' | 'reset';
+  /** Additional CSS classes */
   className?: string;
+  /** Accessible label for screen readers */
   'aria-label'?: string;
+  /** Reference to help text element */
   'aria-describedby'?: string;
+  /** Toggle state for toggle buttons */
+  'aria-pressed'?: boolean;
+  /** Unique identifier */
+  id?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -28,16 +61,22 @@ const Button: React.FC<ButtonProps> = ({
   className,
   'aria-label': ariaLabel,
   'aria-describedby': ariaDescribedby,
+  'aria-pressed': ariaPressed,
+  id,
 }) => {
   const baseClasses = 'btn';
   
   const variantClasses = {
     primary: 'btn-primary',
     secondary: 'btn-secondary',
+    ghost: 'btn-ghost',
     teal: 'btn-teal',
     celebration: 'btn-celebration',
     coral: 'btn-coral',
-    ghost: 'btn-ghost',
+    accent: 'btn-accent',
+    success: 'btn-success',
+    warning: 'btn-warning',
+    info: 'btn-info',
   };
 
   const sizeClasses = {
@@ -58,11 +97,18 @@ const Button: React.FC<ButtonProps> = ({
 
   const handleClick = () => {
     if (!disabled && !loading && onClick) {
-      // Add haptic feedback for mobile
+      // Add haptic feedback for mobile (ADHD-friendly tactile feedback)
       if ('vibrate' in navigator) {
-        navigator.vibrate(50);
+        navigator.vibrate(30); // Gentler vibration for ADHD users
       }
       onClick();
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleClick();
     }
   };
 
@@ -71,9 +117,13 @@ const Button: React.FC<ButtonProps> = ({
       type={type}
       className={classes}
       onClick={handleClick}
+      onKeyDown={handleKeyDown}
       disabled={disabled || loading}
+      id={id}
       aria-label={ariaLabel}
       aria-describedby={ariaDescribedby}
+      aria-pressed={ariaPressed}
+      aria-busy={loading}
       whileHover={!disabled && !loading ? { scale: 1.02 } : {}}
       whileTap={!disabled && !loading ? { scale: 0.98 } : {}}
       transition={{
@@ -87,6 +137,7 @@ const Button: React.FC<ButtonProps> = ({
           className="mr-2 flex items-center justify-center"
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+          aria-hidden="true"
         >
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24">
             <circle

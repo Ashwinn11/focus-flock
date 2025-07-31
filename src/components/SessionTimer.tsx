@@ -109,7 +109,7 @@ const SessionTimer: React.FC<SessionTimerProps> = ({
 
       {/* Encouragement Message */}
       <motion.p
-        className="text-body text-gray-600 font-medium"
+        className="text-body text-surface-variant font-medium"
         initial={false}
         animate={{ opacity: 1 }}
         key={getEncouragementMessage()} // Re-animate when message changes
@@ -118,7 +118,7 @@ const SessionTimer: React.FC<SessionTimerProps> = ({
       </motion.p>
 
       {/* Progress Indicator */}
-      <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+      <div className="w-full bg-surface-container-high rounded-full h-2 overflow-hidden">
         <motion.div
           className={clsx('h-full rounded-full', getProgressBarColor())}
           initial={false}
@@ -140,7 +140,7 @@ const SessionTimer: React.FC<SessionTimerProps> = ({
       )}
 
       {/* Session Stats */}
-      <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-200">
+      <div className="grid grid-cols-2 gap-4 pt-4 border-t border-outline-variant">
         <div className="text-center">
           <div className="text-lg font-bold" style={{ color: 'var(--community-teal)' }}>
             {Math.round(((totalDuration - timeRemaining) / totalDuration) * 100)}%

@@ -103,7 +103,7 @@ const VideoStream: React.FC<VideoStreamProps> = ({
                   </span>
                 )}
               </p>
-              <p className="text-white/80 text-xs capitalize">
+                              <p className="text-white/90 font-medium text-xs capitalize">
                 {participant.energyLevel} energy
               </p>
             </div>
@@ -255,7 +255,7 @@ const VideoSession: React.FC<VideoSessionProps> = ({
 
                 {/* Empty slots for additional participants */}
                 {activeParticipants.length < session.maxParticipants && (
-                  <div className="aspect-video rounded-xl border-2 border-dashed border-gray-300 flex items-center justify-center bg-gray-50">
+                  <div className="aspect-video rounded-xl border-2 border-dashed border-outline flex items-center justify-center bg-surface-dim">
                     <div className="text-center">
                       <div className="text-3xl mb-2">👋</div>
                       <p className="text-small text-gray-500 font-medium">
@@ -318,13 +318,13 @@ const VideoSession: React.FC<VideoSessionProps> = ({
           )}
 
           {/* Session Info */}
-          <Card className="bg-gradient-to-br from-focus-purple/5 to-community-teal/5">
+          <Card variant="session">
             <CardContent>
               <h4 className="font-bold mb-4 flex items-center space-x-2">
                 <span className="text-xl">💡</span>
                 <span>Focus Tips</span>
               </h4>
-              <ul className="space-y-3 text-sm text-gray-600">
+              <ul className="space-y-3 text-sm text-surface-variant">
                 <li className="flex items-start space-x-2">
                   <span className="text-community-teal mt-0.5">•</span>
                   <span>Stay present and focused on your task</span>
@@ -358,7 +358,7 @@ const VideoSession: React.FC<VideoSessionProps> = ({
                 {activeParticipants.map((participant) => (
                   <div
                     key={participant.userId}
-                    className="flex items-center space-x-3 p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors"
+                    className="flex items-center space-x-3 p-3 rounded-lg bg-surface-dim hover:bg-surface-container transition-colors"
                   >
                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-community-teal to-community-teal-light flex items-center justify-center text-white font-bold">
                       {participant.userId === currentUserId ? 'You' : participant.userId.slice(-2).toUpperCase()}

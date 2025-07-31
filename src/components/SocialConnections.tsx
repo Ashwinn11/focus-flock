@@ -198,7 +198,7 @@ const SocialConnections: React.FC<SocialConnectionsProps> = ({
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="flex space-x-1 bg-gray-100 rounded-lg p-1">
+          <div className="flex space-x-1 bg-surface-container rounded-lg p-1">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
@@ -207,7 +207,7 @@ const SocialConnections: React.FC<SocialConnectionsProps> = ({
                   'flex-1 flex items-center justify-center space-x-2 py-2 px-4 rounded-md transition-all duration-200 font-medium',
                   activeTab === tab.id
                     ? 'bg-white text-focus-purple shadow-sm'
-                    : 'text-gray-600 hover:text-gray-900'
+                    : 'text-surface-variant hover:text-gray-900'
                 )}
               >
                 <span>{tab.icon}</span>
@@ -215,7 +215,7 @@ const SocialConnections: React.FC<SocialConnectionsProps> = ({
                 {tab.count > 0 && (
                   <span className={clsx(
                     'px-2 py-1 rounded-full text-tiny font-bold',
-                    activeTab === tab.id ? 'bg-focus-purple text-white' : 'bg-gray-200 text-gray-600'
+                    activeTab === tab.id ? 'bg-focus-purple text-white' : 'bg-surface-container-high text-surface-variant'
                   )}>
                     {tab.count}
                   </span>
@@ -259,7 +259,7 @@ const SocialConnections: React.FC<SocialConnectionsProps> = ({
                           
                           <div>
                             <h4 className="font-semibold">{friend.name}</h4>
-                            <p className="text-small text-gray-600">
+                            <p className="text-small text-surface-variant">
                               {friend.isOnline ? 'Online now' : `Last seen ${getTimeAgo(friend.lastSeen)}`}
                             </p>
                             <div className="flex items-center space-x-3 text-tiny text-gray-500 mt-1">
@@ -298,7 +298,7 @@ const SocialConnections: React.FC<SocialConnectionsProps> = ({
                     <span className="text-2xl text-white">👥</span>
                   </div>
                   <h3 className="text-h2 font-semibold mb-2">No Friends Yet</h3>
-                  <p className="text-body text-gray-600 mb-6">
+                  <p className="text-body text-surface-variant mb-6">
                     Connect with study buddies to build your focus community!
                   </p>
                   <Button variant="celebration">
@@ -341,7 +341,7 @@ const SocialConnections: React.FC<SocialConnectionsProps> = ({
                           </div>
                           
                           {request.message && (
-                            <p className="text-body text-gray-700 mb-3">
+                            <p className="text-body text-text-secondary mb-3">
                               "{request.message}"
                             </p>
                           )}
@@ -381,7 +381,7 @@ const SocialConnections: React.FC<SocialConnectionsProps> = ({
                     <span className="text-2xl text-white">📨</span>
                   </div>
                   <h3 className="text-h2 font-semibold mb-2">No Friend Requests</h3>
-                  <p className="text-body text-gray-600">
+                  <p className="text-body text-surface-variant">
                     When someone sends you a friend request, it will appear here.
                   </p>
                 </CardContent>
@@ -417,7 +417,7 @@ const SocialConnections: React.FC<SocialConnectionsProps> = ({
                           <div className="flex items-center space-x-2 mb-2">
                             <span className="text-lg">{getActivityEmoji(activity.type)}</span>
                             <h4 className="font-semibold">{activity.user.name}</h4>
-                            <span className="text-body text-gray-700">{activity.content}</span>
+                            <span className="text-body text-text-secondary">{activity.content}</span>
                           </div>
                           
                           <div className="flex items-center space-x-2 text-tiny text-gray-500">
@@ -458,7 +458,7 @@ const SocialConnections: React.FC<SocialConnectionsProps> = ({
                     <span className="text-2xl text-white">📈</span>
                   </div>
                   <h3 className="text-h2 font-semibold mb-2">No Activity Yet</h3>
-                  <p className="text-body text-gray-600">
+                  <p className="text-body text-surface-variant">
                     Connect with friends to see their productivity updates and achievements!
                   </p>
                 </CardContent>

@@ -3,11 +3,31 @@ import { motion } from 'framer-motion';
 import { EnergyLevel } from '@/types';
 import { clsx } from 'clsx';
 
+/**
+ * Energy Selector component optimized for ADHD users
+ * 
+ * Features:
+ * - Clear visual distinction between energy levels
+ * - High contrast colors for accessibility
+ * - Keyboard navigation support
+ * - Haptic feedback for selection
+ * - Progressive disclosure with helpful tips
+ * 
+ * @example
+ * ```tsx
+ * <EnergySelector
+ *   selectedEnergy={selectedEnergy}
+ *   onEnergySelect={setSelectedEnergy}
+ *   disabled={isLoading}
+ * />
+ * ```
+ */
 interface EnergySelectorProps {
   selectedEnergy: EnergyLevel | null;
   onEnergySelect: (energy: EnergyLevel) => void;
   className?: string;
   disabled?: boolean;
+  showProTip?: boolean;
 }
 
 const energyOptions = [
@@ -50,11 +70,29 @@ const EnergySelector: React.FC<EnergySelectorProps> = ({
   onEnergySelect,
   className,
   disabled = false,
+  showProTip = true,
 }) => {
+  const handleEnergySelect = (energy: EnergyLevel) => {
+    if (!disabled) {
+      // Add haptic feedback for mobile
+      if ('vibrate' in navigator) {
+        navigator.vibrate(30);
+      }
+      onEnergySelect(energy);
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent, energy: EnergyLevel) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleEnergySelect(energy);
+    }
+  };
+
   return (
     <div className={clsx('space-y-6', className)}>
       <div className="text-center mb-6">
-        <h3 className="text-h2 font-semibold mb-3 text-charcoal">How's your energy today?</h3>
+        <h3 className="text-h2 font-semibold mb-3 text-text-primary">How's your energy today?</h3>
         <p className="text-body text-text-secondary max-w-md mx-auto">
           Choose your energy level to match with compatible study buddies
         </p>
@@ -72,7 +110,8 @@ const EnergySelector: React.FC<EnergySelectorProps> = ({
                 : 'hover:scale-102',
               disabled && 'opacity-50 cursor-not-allowed'
             )}
-            onClick={() => !disabled && onEnergySelect(option.level)}
+            onClick={() => handleEnergySelect(option.level)}
+            onKeyDown={(e) => handleKeyDown(e, option.level)}
             whileHover={!disabled ? { scale: 1.02 } : {}}
             whileTap={!disabled ? { scale: 0.98 } : {}}
             transition={{
@@ -84,6 +123,7 @@ const EnergySelector: React.FC<EnergySelectorProps> = ({
             tabIndex={disabled ? -1 : 0}
             aria-label={`Select ${option.title} energy level`}
             aria-pressed={selectedEnergy === option.level}
+            aria-describedby={`energy-help-${option.level}`}
           >
             {/* Energy Icon */}
             <motion.div
@@ -91,6 +131,7 @@ const EnergySelector: React.FC<EnergySelectorProps> = ({
               initial={false}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.1 }}
+              aria-hidden="true"
             >
               {option.icon}
             </motion.div>
@@ -101,7 +142,7 @@ const EnergySelector: React.FC<EnergySelectorProps> = ({
             </h4>
 
             {/* Energy Description */}
-            <p className="text-small font-medium">
+            <p className="text-small font-medium" id={`energy-help-${option.level}`}>
               {option.description}
             </p>
 
@@ -112,8 +153,9 @@ const EnergySelector: React.FC<EnergySelectorProps> = ({
                 initial={false}
                 animate={{ scale: 1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                aria-hidden="true"
               >
-                <svg className="w-5 h-5 text-muted-blue" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-primary-blue" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                 </svg>
               </motion.div>
@@ -123,21 +165,25 @@ const EnergySelector: React.FC<EnergySelectorProps> = ({
       </div>
 
       {/* Helpful Tip */}
-      <motion.div
-        className="mt-8 p-6 rounded-xl text-center bg-soft-lavender-light border border-border-subtle"
-        initial={false}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3 }}
-      >
-        <div className="flex items-center justify-center mb-2">
-          <span className="text-2xl mr-2">💡</span>
-          <span className="text-h3 font-semibold text-muted-blue-dark">Pro Tip</span>
-        </div>
-        <p className="text-body text-text-primary font-medium">
-          Your energy level helps match you with study buddies who have similar focus goals. 
-          Don't worry - you can change this anytime!
-        </p>
-      </motion.div>
+      {showProTip && (
+        <motion.div
+          className="mt-8 p-6 rounded-xl text-center bg-card-info-bg border border-card-info-border"
+          initial={false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          role="complementary"
+          aria-label="Energy selection tip"
+        >
+          <div className="flex items-center justify-center mb-2">
+            <span className="text-2xl mr-2" aria-hidden="true">💡</span>
+            <span className="text-h3 font-semibold text-card-info-text">Pro Tip</span>
+          </div>
+          <p className="text-body text-card-info-text font-medium">
+            Your energy level helps match you with study buddies who have similar focus goals. 
+            Don't worry - you can change this anytime!
+          </p>
+        </motion.div>
+      )}
     </div>
   );
 };

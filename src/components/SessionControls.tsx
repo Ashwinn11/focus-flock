@@ -109,12 +109,12 @@ const SessionControls: React.FC<SessionControlsProps> = ({
 
       {/* Phase Indicator */}
       <div className="w-full mt-4 text-center">
-        <div className="inline-flex items-center space-x-2 px-4 py-2 bg-gray-100 rounded-full">
+        <div className="inline-flex items-center space-x-2 px-4 py-2 bg-surface-container rounded-full">
           <div className={clsx(
             'w-2 h-2 rounded-full',
             currentPhase === 'focus' ? 'bg-community-teal animate-pulse' : 'bg-gray-400'
           )} />
-          <span className="text-sm font-medium text-gray-700 capitalize">
+          <span className="text-sm font-medium text-text-secondary capitalize">
             {currentPhase} Phase
           </span>
         </div>

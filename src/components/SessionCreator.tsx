@@ -117,8 +117,8 @@ const SessionCreator: React.FC<SessionCreatorProps> = ({
       {/* Progress Indicator */}
       <div className="mb-8">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-h1 font-bold text-gray-900">Create Your Focus Session</h2>
-          <span className="text-small text-gray-500">Step {currentStep} of {totalSteps}</span>
+          <h2 className="text-h1 font-bold text-text-primary">Create Your Focus Session</h2>
+          <span className="text-small text-text-muted">Step {currentStep} of {totalSteps}</span>
         </div>
         
         <div className="flex space-x-2">
@@ -127,7 +127,7 @@ const SessionCreator: React.FC<SessionCreatorProps> = ({
               key={i}
               className={clsx(
                 'flex-1 h-2 rounded-full transition-all duration-300',
-                i + 1 <= currentStep ? 'bg-focus-purple' : 'bg-gray-200'
+                i + 1 <= currentStep ? 'bg-focus-purple' : 'bg-bg-tertiary'
               )}
             />
           ))}
@@ -146,14 +146,14 @@ const SessionCreator: React.FC<SessionCreatorProps> = ({
             >
               <div>
                 <h3 className="text-h2 font-semibold mb-4">What are you focusing on today?</h3>
-                <p className="text-body text-gray-600 mb-6">
+                <p className="text-body text-text-secondary mb-6">
                   Give your session a name that motivates you. Keep it simple and positive!
                 </p>
               </div>
 
               <div className="space-y-4">
                 <div>
-                  <label className="block text-small font-medium text-gray-700 mb-2">
+                  <label className="block text-small font-medium text-text-secondary mb-2">
                     Session Title *
                   </label>
                   <input
@@ -161,13 +161,13 @@ const SessionCreator: React.FC<SessionCreatorProps> = ({
                     value={formData.title || ''}
                     onChange={(e) => handleInputChange('title', e.target.value)}
                     placeholder="e.g., Morning Deep Work, Essay Writing, Admin Catch-up"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-focus-purple focus:border-transparent"
+                    className="w-full px-4 py-3 border border-border-default rounded-lg focus:ring-2 focus:ring-focus-purple focus:border-transparent"
                     maxLength={100}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-small font-medium text-gray-700 mb-2">
+                  <label className="block text-small font-medium text-text-secondary mb-2">
                     Description (Optional)
                   </label>
                   <textarea
@@ -175,7 +175,7 @@ const SessionCreator: React.FC<SessionCreatorProps> = ({
                     onChange={(e) => handleInputChange('description', e.target.value)}
                     placeholder="Share what you'll be working on or any specific goals..."
                     rows={3}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-focus-purple focus:border-transparent resize-none"
+                    className="w-full px-4 py-3 border border-border-default rounded-lg focus:ring-2 focus:ring-focus-purple focus:border-transparent resize-none"
                     maxLength={500}
                   />
                 </div>
@@ -193,7 +193,7 @@ const SessionCreator: React.FC<SessionCreatorProps> = ({
             >
               <div>
                 <h3 className="text-h2 font-semibold mb-4">What type of session works best?</h3>
-                <p className="text-body text-gray-600 mb-6">
+                <p className="text-body text-text-secondary mb-6">
                   Choose the style that matches your work and energy today.
                 </p>
               </div>
@@ -206,7 +206,7 @@ const SessionCreator: React.FC<SessionCreatorProps> = ({
                       'p-4 rounded-xl cursor-pointer transition-all duration-200 border-2',
                       formData.sessionType === type.type
                         ? 'border-focus-purple bg-focus-purple/5 scale-105'
-                        : 'border-gray-200 hover:border-gray-300 hover:scale-102'
+                        : 'border-border-subtle hover:border-border-default hover:scale-102'
                     )}
                     onClick={() => handleInputChange('sessionType', type.type)}
                     whileHover={{ scale: 1.02 }}
@@ -215,7 +215,7 @@ const SessionCreator: React.FC<SessionCreatorProps> = ({
                     <div className="text-center">
                       <div className="text-3xl mb-2">{type.icon}</div>
                       <h4 className="text-h3 font-semibold mb-1">{type.title}</h4>
-                      <p className="text-small text-gray-600">{type.description}</p>
+                      <p className="text-small text-text-secondary">{type.description}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -248,7 +248,7 @@ const SessionCreator: React.FC<SessionCreatorProps> = ({
             >
               <div>
                 <h3 className="text-h2 font-semibold mb-4">Final touches</h3>
-                <p className="text-body text-gray-600 mb-6">
+                <p className="text-body text-text-secondary mb-6">
                   Set your session length and who can join your focus session.
                 </p>
               </div>
@@ -256,7 +256,7 @@ const SessionCreator: React.FC<SessionCreatorProps> = ({
               <div className="space-y-6">
                 {/* Duration */}
                 <div>
-                  <label className="block text-small font-medium text-gray-700 mb-3">
+                  <label className="block text-small font-medium text-text-secondary mb-3">
                     Session Duration
                   </label>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -267,14 +267,14 @@ const SessionCreator: React.FC<SessionCreatorProps> = ({
                           'p-3 rounded-lg cursor-pointer transition-all duration-200 border-2 text-center',
                           formData.duration === option.value
                             ? 'border-focus-purple bg-focus-purple/5'
-                            : 'border-gray-200 hover:border-gray-300'
+                            : 'border-border-subtle hover:border-border-default'
                         )}
                         onClick={() => handleInputChange('duration', option.value)}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                       >
                         <div className="font-semibold">{option.label}</div>
-                        <div className="text-tiny text-gray-500 mt-1">{option.description}</div>
+                        <div className="text-tiny text-text-muted mt-1">{option.description}</div>
                       </motion.div>
                     ))}
                   </div>
@@ -282,7 +282,7 @@ const SessionCreator: React.FC<SessionCreatorProps> = ({
 
                 {/* Max Participants */}
                 <div>
-                  <label className="block text-small font-medium text-gray-700 mb-3">
+                  <label className="block text-small font-medium text-text-secondary mb-3">
                     Maximum Participants
                   </label>
                   <div className="flex items-center space-x-4">
@@ -298,16 +298,16 @@ const SessionCreator: React.FC<SessionCreatorProps> = ({
                       {formData.maxParticipants || 4}
                     </span>
                   </div>
-                  <p className="text-tiny text-gray-500 mt-1">
+                  <p className="text-tiny text-text-muted mt-1">
                     Smaller groups create better connections and accountability
                   </p>
                 </div>
 
                 {/* Privacy Toggle */}
-                <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                <div className="flex items-center justify-between p-4 bg-surface-dim rounded-lg">
                   <div>
                     <h4 className="font-semibold">Private Session</h4>
-                    <p className="text-small text-gray-600">Only people with the link can join</p>
+                    <p className="text-small text-text-secondary">Only people with the link can join</p>
                   </div>
                   <label className="relative inline-flex items-center cursor-pointer">
                     <input
@@ -316,7 +316,7 @@ const SessionCreator: React.FC<SessionCreatorProps> = ({
                       onChange={(e) => handleInputChange('isPrivate', e.target.checked)}
                       className="sr-only peer"
                     />
-                    <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-focus-purple/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-focus-purple"></div>
+                    <div className="w-11 h-6 bg-bg-tertiary peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-focus-purple/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-bg-secondary after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-focus-purple"></div>
                   </label>
                 </div>
               </div>
@@ -324,7 +324,7 @@ const SessionCreator: React.FC<SessionCreatorProps> = ({
           )}
 
           {/* Navigation Buttons */}
-          <div className="flex justify-between items-center mt-8 pt-6 border-t border-gray-200">
+          <div className="flex justify-between items-center mt-8 pt-6 border-t border-border-subtle">
             <Button
               variant="ghost"
               onClick={handleBack}

@@ -183,7 +183,7 @@ const ForumSystem: React.FC<ForumSystemProps> = ({
           </div>
         </CardHeader>
         <CardContent>
-          <p className="text-body text-gray-600">
+          <p className="text-body text-surface-variant">
             Connect with your flock, share experiences, and support each other's productivity journey.
           </p>
         </CardContent>
@@ -202,7 +202,7 @@ const ForumSystem: React.FC<ForumSystemProps> = ({
                   onClick={() => setSelectedCategory(null)}
                   className={clsx(
                     'w-full text-left p-3 rounded-lg transition-colors',
-                    !selectedCategory ? 'bg-focus-purple text-white' : 'hover:bg-gray-100'
+                    !selectedCategory ? 'bg-focus-purple text-white' : 'hover:bg-surface-container'
                   )}
                 >
                   <div className="flex items-center space-x-3">
@@ -222,7 +222,7 @@ const ForumSystem: React.FC<ForumSystemProps> = ({
                     onClick={() => setSelectedCategory(category.id)}
                     className={clsx(
                       'w-full text-left p-3 rounded-lg transition-colors',
-                      selectedCategory === category.id ? 'bg-focus-purple text-white' : 'hover:bg-gray-100'
+                      selectedCategory === category.id ? 'bg-focus-purple text-white' : 'hover:bg-surface-container'
                     )}
                   >
                     <div className="flex items-center space-x-3">
@@ -257,7 +257,7 @@ const ForumSystem: React.FC<ForumSystemProps> = ({
                     onClick={() => setSortBy(option.value as any)}
                     className={clsx(
                       'w-full text-left p-2 rounded-lg transition-colors flex items-center space-x-2',
-                      sortBy === option.value ? 'bg-focus-purple text-white' : 'hover:bg-gray-100'
+                      sortBy === option.value ? 'bg-focus-purple text-white' : 'hover:bg-surface-container'
                     )}
                   >
                     <span>{option.icon}</span>
@@ -314,7 +314,7 @@ const ForumSystem: React.FC<ForumSystemProps> = ({
                         <h3 className="text-h3 font-bold mb-2 text-gray-900">
                           {post.title}
                         </h3>
-                        <p className="text-body text-gray-700 mb-4 leading-relaxed">
+                        <p className="text-body text-text-secondary mb-4 leading-relaxed">
                           {post.content}
                         </p>
 
@@ -324,7 +324,7 @@ const ForumSystem: React.FC<ForumSystemProps> = ({
                             {post.tags.map((tag) => (
                               <span
                                 key={tag}
-                                className="px-2 py-1 bg-gray-100 text-gray-600 text-tiny rounded-full"
+                                className="px-2 py-1 bg-surface-container text-surface-variant text-tiny rounded-full"
                               >
                                 #{tag}
                               </span>
@@ -376,7 +376,7 @@ const ForumSystem: React.FC<ForumSystemProps> = ({
                   <span className="text-2xl text-white">📝</span>
                 </div>
                 <h3 className="text-h2 font-semibold mb-2">No Posts Yet</h3>
-                <p className="text-body text-gray-600 mb-6">
+                <p className="text-body text-surface-variant mb-6">
                   {selectedCategory 
                     ? 'No posts in this category yet. Be the first to start the conversation!'
                     : 'Be the first to share with the community!'
@@ -475,13 +475,13 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-small font-medium text-gray-700 mb-2">
+            <label className="block text-small font-medium text-text-secondary mb-2">
               Category *
             </label>
             <select
               value={formData.category}
               onChange={(e) => setFormData(prev => ({ ...prev, category: e.target.value }))}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-focus-purple focus:border-transparent"
+              className="w-full px-3 py-2 border border-outline rounded-lg focus:ring-2 focus:ring-focus-purple focus:border-transparent"
               required
             >
               <option value="">Select a category</option>
@@ -494,7 +494,7 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
           </div>
 
           <div>
-            <label className="block text-small font-medium text-gray-700 mb-2">
+            <label className="block text-small font-medium text-text-secondary mb-2">
               Title *
             </label>
             <input
@@ -502,13 +502,13 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
               value={formData.title}
               onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
               placeholder="What's on your mind?"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-focus-purple focus:border-transparent"
+              className="w-full px-3 py-2 border border-outline rounded-lg focus:ring-2 focus:ring-focus-purple focus:border-transparent"
               required
             />
           </div>
 
           <div>
-            <label className="block text-small font-medium text-gray-700 mb-2">
+            <label className="block text-small font-medium text-text-secondary mb-2">
               Content *
             </label>
             <textarea
@@ -516,13 +516,13 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
               onChange={(e) => setFormData(prev => ({ ...prev, content: e.target.value }))}
               placeholder="Share your thoughts, experiences, or questions..."
               rows={6}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-focus-purple focus:border-transparent resize-none"
+              className="w-full px-3 py-2 border border-outline rounded-lg focus:ring-2 focus:ring-focus-purple focus:border-transparent resize-none"
               required
             />
           </div>
 
           <div>
-            <label className="block text-small font-medium text-gray-700 mb-2">
+            <label className="block text-small font-medium text-text-secondary mb-2">
               Tags
             </label>
             <div className="flex space-x-2 mb-2">
@@ -531,7 +531,7 @@ const CreatePostModal: React.FC<CreatePostModalProps> = ({
                 value={tagInput}
                 onChange={(e) => setTagInput(e.target.value)}
                 placeholder="Add a tag..."
-                className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-focus-purple focus:border-transparent text-sm"
+                className="flex-1 px-3 py-2 border border-outline rounded-lg focus:ring-2 focus:ring-focus-purple focus:border-transparent text-sm"
                 onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTag())}
               />
               <Button type="button" variant="ghost" size="sm" onClick={addTag}>

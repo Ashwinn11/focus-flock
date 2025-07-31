@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
+import Card from '@/components/Card';
 import MatchingAlgorithm from '@/components/MatchingAlgorithm';
 import EnergySelector from '@/components/EnergySelector';
 import { EnergyLevel, SessionType, Session } from '@/types';
@@ -61,7 +62,7 @@ const FindSessionPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-focus-purple/5 to-community-teal/5 py-12">
+    <div className="min-h-screen bg-bg-primary py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {!showMatching ? (
           <>
@@ -72,10 +73,10 @@ const FindSessionPage: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-display font-bold text-gray-900 mb-4">
+              <h1 className="text-display font-bold text-text-primary mb-4">
                 Find Your Focus Flock
               </h1>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-text-secondary max-w-3xl mx-auto">
                 Tell us about your energy today and we'll match you with the perfect study buddies
               </p>
             </motion.div>
@@ -87,11 +88,28 @@ const FindSessionPage: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <div className="bg-white rounded-2xl p-8 shadow-md">
+              <div className="relative">
                 <EnergySelector
                   selectedEnergy={selectedEnergy}
                   onEnergySelect={setSelectedEnergy}
+                  showProTip={false}
                 />
+                
+                {/* Subtle Help Icon */}
+                <motion.div
+                  className="absolute top-4 right-4"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1 }}
+                >
+                  <button
+                    className="w-8 h-8 rounded-full bg-bg-secondary border border-border-subtle flex items-center justify-center text-text-tertiary hover:text-text-secondary hover:border-border-default transition-colors"
+                    title="Energy levels help match you with study buddies who have similar focus goals"
+                    aria-label="Learn about energy levels"
+                  >
+                    <span className="text-sm">?</span>
+                  </button>
+                </motion.div>
               </div>
             </motion.div>
 
@@ -102,55 +120,53 @@ const FindSessionPage: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <div className="bg-white rounded-2xl p-8 shadow-md">
-                <div className="text-center mb-6">
-                  <h3 className="text-h2 font-semibold mb-2">
-                    Session Type Preference (Optional)
-                  </h3>
-                  <p className="text-body text-gray-600">
-                    Choose a specific type of session, or leave blank to see all options
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  {sessionTypeOptions.map((option) => (
-                    <motion.div
-                      key={option.type}
-                      className={`p-4 rounded-xl cursor-pointer transition-all duration-200 border-2 text-center ${
-                        preferredSessionType === option.type
-                          ? 'border-focus-purple bg-focus-purple/5 scale-105'
-                          : 'border-gray-200 hover:border-gray-300 hover:scale-102'
-                      }`}
-                      onClick={() => 
-                        setPreferredSessionType(
-                          preferredSessionType === option.type ? undefined : option.type
-                        )
-                      }
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <div className="text-3xl mb-2">{option.icon}</div>
-                      <h4 className="font-semibold mb-1">{option.title}</h4>
-                      <p className="text-small text-gray-600">{option.description}</p>
-                    </motion.div>
-                  ))}
-                </div>
-
-                {preferredSessionType && (
-                  <motion.div
-                    className="mt-4 text-center"
-                    initial={false}
-                    animate={{ opacity: 1, scale: 1 }}
-                  >
-                    <button
-                      onClick={() => setPreferredSessionType(undefined)}
-                      className="text-small text-gray-500 hover:text-gray-700"
-                    >
-                      Clear preference
-                    </button>
-                  </motion.div>
-                )}
+              <div className="text-center mb-6">
+                <h3 className="text-h2 font-semibold mb-2 text-text-primary">
+                  Session Type Preference (Optional)
+                </h3>
+                <p className="text-body text-text-secondary">
+                  Choose a specific type of session, or leave blank to see all options
+                </p>
               </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                {sessionTypeOptions.map((option) => (
+                  <motion.div
+                    key={option.type}
+                    className={`p-4 rounded-xl cursor-pointer transition-all duration-200 border-2 text-center bg-bg-secondary ${
+                      preferredSessionType === option.type
+                        ? 'border-focus-purple bg-focus-purple/5 scale-105'
+                        : 'border-border-subtle hover:border-border-default hover:scale-102'
+                    }`}
+                    onClick={() => 
+                      setPreferredSessionType(
+                        preferredSessionType === option.type ? undefined : option.type
+                      )
+                    }
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <div className="text-3xl mb-2">{option.icon}</div>
+                    <h4 className="font-semibold mb-1 text-text-primary">{option.title}</h4>
+                    <p className="text-small text-text-tertiary font-medium opacity-85">{option.description}</p>
+                  </motion.div>
+                ))}
+              </div>
+
+              {preferredSessionType && (
+                <motion.div
+                  className="mt-4 text-center"
+                  initial={false}
+                  animate={{ opacity: 1, scale: 1 }}
+                >
+                  <button
+                    onClick={() => setPreferredSessionType(undefined)}
+                    className="text-small text-text-muted hover:text-text-secondary"
+                  >
+                    Clear preference
+                  </button>
+                </motion.div>
+              )}
             </motion.div>
 
             {/* Continue Button */}
@@ -166,7 +182,7 @@ const FindSessionPage: React.FC = () => {
                 className={`px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 ${
                   selectedEnergy
                     ? 'bg-gradient-to-r from-focus-purple to-community-teal text-white hover:scale-105 shadow-lg'
-                    : 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                    : 'bg-bg-tertiary text-text-muted cursor-not-allowed'
                 }`}
               >
                 {selectedEnergy ? '🔍 Find My Flock' : 'Select Your Energy Level'}

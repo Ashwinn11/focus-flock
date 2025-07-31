@@ -92,7 +92,7 @@ const SessionLobbyPage: React.FC = () => {
               🔄
             </motion.div>
           </div>
-          <h2 className="text-h2 font-semibold text-gray-900">Loading session...</h2>
+          <h2 className="text-h2 font-semibold text-text-primary">Loading session...</h2>
         </motion.div>
       </div>
     );
@@ -102,8 +102,8 @@ const SessionLobbyPage: React.FC = () => {
     return (
       <div className="min-h-screen bg-gradient-to-br from-focus-purple/5 to-community-teal/5 flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-h1 font-bold text-gray-900 mb-4">Session Not Found</h2>
-          <p className="text-body text-gray-600 mb-6">
+          <h2 className="text-h1 font-bold text-text-primary mb-4">Session Not Found</h2>
+          <p className="text-body text-text-secondary mb-6">
             The session you're looking for doesn't exist or has ended.
           </p>
           <button
