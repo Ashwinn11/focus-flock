@@ -264,7 +264,7 @@ const HomePage: React.FC = () => {
               <Button
                 size="lg"
                 variant="celebration"
-                onClick={() => router.push('/signup')}
+                onClick={() => router.push('/session/find')}
                 className="w-full sm:w-auto"
               >
                 🚀 Start Free Today
