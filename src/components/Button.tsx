@@ -4,7 +4,7 @@ import { clsx } from 'clsx';
 
 interface ButtonProps {
   children: React.ReactNode;
-  variant?: 'primary' | 'coral' | 'teal' | 'celebration' | 'secondary' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'teal' | 'celebration' | 'coral' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   disabled?: boolean;
   loading?: boolean;
@@ -33,10 +33,10 @@ const Button: React.FC<ButtonProps> = ({
   
   const variantClasses = {
     primary: 'btn-primary',
-    coral: 'btn-coral',
+    secondary: 'btn-secondary',
     teal: 'btn-teal',
     celebration: 'btn-celebration',
-    secondary: 'btn-secondary',
+    coral: 'btn-coral',
     ghost: 'btn-ghost',
   };
 

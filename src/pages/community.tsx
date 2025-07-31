@@ -85,13 +85,13 @@ const CommunityPage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-focus-purple to-community-teal flex items-center justify-center shadow-xl">
+            <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-muted-blue to-soft-sage flex items-center justify-center shadow-xl">
               <span className="text-4xl text-white">🤝</span>
             </div>
             <h1 className="text-display font-bold text-gray-900 mb-4">
               Your Focus Community
             </h1>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+            <p className="text-xl text-text-secondary max-w-3xl mx-auto font-medium">
               Connect with study buddies, join groups, and build lasting relationships 
               with people who understand your productivity journey
             </p>
@@ -104,7 +104,7 @@ const CommunityPage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <Card>
+            <Card className="bg-bg-secondary border border-border-subtle">
               <CardContent>
                 <div className="flex flex-wrap gap-2">
                   {sections.map((section) => (

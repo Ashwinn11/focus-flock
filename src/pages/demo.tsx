@@ -32,6 +32,7 @@ const DemoPage: React.FC = () => {
       </Head>
 
     <div className="min-h-screen py-12" style={{ background: 'linear-gradient(135deg, var(--soft-lavender) 0%, var(--mint-cream) 100%)' }}>
+    <div className="min-h-screen py-12 bg-gradient-to-br from-soft-cream to-muted-blue-light">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -40,13 +41,13 @@ const DemoPage: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-focus-purple to-community-teal flex items-center justify-center shadow-xl">
+          <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-muted-blue to-soft-sage flex items-center justify-center shadow-xl">
             <span className="text-4xl text-white">🎨</span>
           </div>
           <h1 className="text-display font-bold text-gray-900 mb-6">
             Focus Flock MVP Demo
           </h1>
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto font-medium">
+          <p className="text-xl text-text-secondary max-w-3xl mx-auto font-medium">
             Experience the ADHD-friendly design system and core features
           </p>
         </motion.div>

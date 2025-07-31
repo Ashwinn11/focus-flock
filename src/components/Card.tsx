@@ -97,7 +97,7 @@ interface CardTitleProps {
 }
 
 export const CardTitle: React.FC<CardTitleProps> = ({ children, className }) => (
-  <h3 className={clsx('text-h3 font-semibold mb-2 text-gray-900', className)}>
+  <h3 className={clsx('text-h3 font-semibold mb-2 text-charcoal', className)}>
     {children}
   </h3>
 );
@@ -109,7 +109,7 @@ interface CardSubtitleProps {
 }
 
 export const CardSubtitle: React.FC<CardSubtitleProps> = ({ children, className }) => (
-  <p className={clsx('text-small text-gray-600 mb-0', className)}>
+  <p className={clsx('text-small text-text-secondary mb-0', className)}>
     {children}
   </p>
 );
@@ -133,7 +133,7 @@ interface CardFooterProps {
 }
 
 export const CardFooter: React.FC<CardFooterProps> = ({ children, className }) => (
-  <div className={clsx('mt-6 pt-4 border-t border-gray-100', className)}>
+  <div className={clsx('mt-6 pt-4 border-t border-border-subtle', className)}>
     {children}
   </div>
 );

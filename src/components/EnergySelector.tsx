@@ -54,8 +54,8 @@ const EnergySelector: React.FC<EnergySelectorProps> = ({
   return (
     <div className={clsx('space-y-6', className)}>
       <div className="text-center mb-6">
-        <h3 className="text-h2 font-semibold mb-3 text-gray-900">How's your energy today?</h3>
-        <p className="text-body text-gray-600 max-w-md mx-auto">
+        <h3 className="text-h2 font-semibold mb-3 text-charcoal">How's your energy today?</h3>
+        <p className="text-body text-text-secondary max-w-md mx-auto">
           Choose your energy level to match with compatible study buddies
         </p>
       </div>
@@ -69,7 +69,7 @@ const EnergySelector: React.FC<EnergySelectorProps> = ({
               option.color,
               selectedEnergy === option.level
                 ? 'selected'
-                : 'border-transparent hover:scale-102',
+                : 'hover:scale-102',
               disabled && 'opacity-50 cursor-not-allowed'
             )}
             onClick={() => !disabled && onEnergySelect(option.level)}
@@ -101,19 +101,19 @@ const EnergySelector: React.FC<EnergySelectorProps> = ({
             </h4>
 
             {/* Energy Description */}
-            <p className="text-small opacity-90 font-medium">
+            <p className="text-small font-medium">
               {option.description}
             </p>
 
             {/* Selection Indicator */}
             {selectedEnergy === option.level && (
               <motion.div
-                className="absolute top-4 right-4 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md"
+                className="absolute top-4 right-4 w-8 h-8 bg-bg-secondary rounded-full flex items-center justify-center shadow-md border border-border-subtle"
                 initial={false}
                 animate={{ scale: 1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 20 }}
               >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" style={{ color: 'var(--focus-purple)' }}>
+                <svg className="w-5 h-5 text-muted-blue" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                 </svg>
               </motion.div>
@@ -124,17 +124,16 @@ const EnergySelector: React.FC<EnergySelectorProps> = ({
 
       {/* Helpful Tip */}
       <motion.div
-        className="mt-8 p-6 rounded-xl text-center"
-        style={{ background: 'var(--soft-lavender)' }}
+        className="mt-8 p-6 rounded-xl text-center bg-soft-lavender-light border border-border-subtle"
         initial={false}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
       >
         <div className="flex items-center justify-center mb-2">
           <span className="text-2xl mr-2">💡</span>
-          <span className="text-h3 font-semibold" style={{ color: 'var(--focus-purple)' }}>Pro Tip</span>
+          <span className="text-h3 font-semibold text-muted-blue-dark">Pro Tip</span>
         </div>
-        <p className="text-body text-gray-700 font-medium">
+        <p className="text-body text-text-primary font-medium">
           Your energy level helps match you with study buddies who have similar focus goals. 
           Don't worry - you can change this anytime!
         </p>

@@ -88,21 +88,15 @@ const HomePage: React.FC = () => {
       </Head>
 
     <div className="min-h-screen" style={{ background: 'linear-gradient(135deg, var(--soft-lavender) 0%, var(--mint-cream) 100%)' }}>
+    <div className="min-h-screen bg-gradient-to-br from-soft-cream to-muted-blue-light">
       {/* Hero Section */}
       <section className="relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-20 left-10 w-32 h-32 rounded-full" style={{ background: 'var(--dopamine-yellow)' }} />
-          <div className="absolute top-40 right-20 w-24 h-24 rounded-full" style={{ background: 'var(--flock-coral)' }} />
-          <div className="absolute bottom-20 left-1/4 w-20 h-20 rounded-full" style={{ background: 'var(--community-teal)' }} />
-        </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center relative z-10">
             {/* Main Headline */}
             <motion.h1
-              className="text-display font-bold mb-6"
-              style={{ color: '#2D3748' }}
+              className="text-display font-bold mb-6 text-charcoal"
               initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -110,8 +104,7 @@ const HomePage: React.FC = () => {
               Your productivity tribe,
               <br />
               <span 
-                className="bg-gradient-to-r bg-clip-text text-transparent font-black"
-                style={{ backgroundImage: 'linear-gradient(135deg, var(--focus-purple) 0%, var(--community-teal) 100%)' }}
+                className="text-muted-blue font-black"
               >
                 where focus feels social
               </span>
@@ -119,7 +112,7 @@ const HomePage: React.FC = () => {
 
             {/* Subtitle */}
             <motion.p
-              className="text-xl text-gray-700 mb-12 max-w-3xl mx-auto font-medium leading-relaxed"
+              className="text-xl text-text-secondary mb-12 max-w-3xl mx-auto font-medium leading-relaxed"
               initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -135,7 +128,7 @@ const HomePage: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/50">
+              <div className="bg-bg-secondary rounded-2xl p-8 shadow-lg border border-border-subtle">
                 <EnergySelector
                   selectedEnergy={selectedEnergy}
                   onEnergySelect={setSelectedEnergy}
