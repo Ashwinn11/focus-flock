@@ -9,24 +9,42 @@ module.exports = {
     extend: {
       colors: {
         // Focus Flock Brand Colors
-        'focus-purple': '#8B5FBF',    // Primary brand color - focus and intention
-        'flock-coral': '#FF6B7A',     // Community warmth and connection
-        'community-teal': '#4ECDC4',  // Growth and harmony
-        'dopamine-yellow': '#FFD93D', // Celebration and achievement
+        'focus-purple': {
+          DEFAULT: '#8B5FBF',
+          light: '#A67CD9',
+          dark: '#6B4B8F',
+        },
+        'flock-coral': {
+          DEFAULT: '#FF6B7A',
+          light: '#FF8A9A',
+          dark: '#E55A6A',
+        },
+        'community-teal': {
+          DEFAULT: '#4ECDC4',
+          light: '#6EDDD5',
+          dark: '#3EB8B0',
+        },
+        'dopamine-yellow': {
+          DEFAULT: '#FFD93D',
+          light: '#FFE55C',
+          dark: '#E6C435',
+        },
         
-        // ADHD-Friendly Color Variations
-        'focus-purple-light': '#A67CD9',
-        'focus-purple-dark': '#6B4B8F',
-        'flock-coral-light': '#FF8A9A',
-        'flock-coral-dark': '#E55A6A',
-        'community-teal-light': '#6EDDD5',
-        'community-teal-dark': '#3EB8B0',
-        'dopamine-yellow-light': '#FFE55C',
-        'dopamine-yellow-dark': '#E6C435',
+        // Supporting Colors
+        'soft-lavender': '#E6D9F5',
+        'warm-peach': '#FFF2F0',
+        'mint-cream': '#F0FFFE',
+        'sunshine': '#FFF8E1',
       },
       fontFamily: {
-        'adhd-friendly': ['Inter', 'system-ui', 'sans-serif'],
-        'display': ['Poppins', 'system-ui', 'sans-serif'],
+        'body': ['Inter', 'system-ui', 'sans-serif'],
+        'display': ['Outfit', 'system-ui', 'sans-serif'],
+      },
+      fontSize: {
+        'display': ['clamp(2rem, 4vw, 2.5rem)', { lineHeight: '1.2', letterSpacing: '-0.025em' }],
+        'h1': ['clamp(1.75rem, 3vw, 2rem)', { lineHeight: '1.3' }],
+        'h2': ['clamp(1.5rem, 2.5vw, 1.75rem)', { lineHeight: '1.4' }],
+        'h3': ['clamp(1.25rem, 2vw, 1.5rem)', { lineHeight: '1.4' }],
       },
       animation: {
         'celebration-burst': 'celebration-burst 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6)',
@@ -34,6 +52,8 @@ module.exports = {
         'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
         'bounce-gentle': 'bounce-gentle 1s ease-in-out infinite',
         'milestone-glow': 'milestone-glow 3s ease-in-out infinite',
+        'float': 'float 6s ease-in-out infinite',
+        'gentle-pop': 'gentle-pop 0.3s ease-out',
       },
       keyframes: {
         'celebration-burst': {
@@ -69,6 +89,15 @@ module.exports = {
             transform: 'scale(1.1)'
           },
         },
+        'float': {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+        'gentle-pop': {
+          '0%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.05)' },
+          '100%': { transform: 'scale(1)' },
+        },
       },
       spacing: {
         '18': '4.5rem',
@@ -77,10 +106,15 @@ module.exports = {
       borderRadius: {
         'xl': '1rem',
         '2xl': '1.5rem',
+        '3xl': '2rem',
       },
       boxShadow: {
         'glow': '0 0 20px rgba(139, 95, 191, 0.3)',
         'celebration': '0 0 30px rgba(255, 217, 61, 0.5)',
+        'soft': '0 4px 20px rgba(139, 95, 191, 0.1)',
+      },
+      backdropBlur: {
+        'xs': '2px',
       },
     },
   },

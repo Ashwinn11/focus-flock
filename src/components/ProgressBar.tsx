@@ -23,7 +23,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
 }) => {
   const clampedProgress = Math.max(0, Math.min(100, progress));
   
-  const baseClasses = 'progress-container w-full bg-gray-200 rounded-full overflow-hidden relative';
+  const baseClasses = 'progress-container';
   
   const sizeClasses = {
     sm: 'h-2',
@@ -32,10 +32,10 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   };
 
   const variantClasses = {
-    default: 'progress-bar bg-gradient-to-r from-community-teal to-community-teal-light',
-    celebration: 'progress-celebration bg-gradient-to-r from-dopamine-yellow to-dopamine-yellow-light',
-    session: 'bg-gradient-to-r from-focus-purple to-focus-purple-light',
-    achievement: 'bg-gradient-to-r from-flock-coral to-flock-coral-light',
+    default: 'progress-bar',
+    celebration: 'progress-celebration',
+    session: 'progress-focus',
+    achievement: 'progress-bar',
   };
 
   const classes = clsx(
@@ -45,7 +45,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   );
 
   const progressBarClasses = clsx(
-    'progress-bar h-full rounded-full transition-all duration-300 ease-out relative',
+    'h-full rounded-full relative',
     variantClasses[variant]
   );
 
@@ -56,11 +56,11 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   return (
     <div className="w-full">
       {showLabel && (
-        <div className="flex justify-between items-center mb-2">
-          <span className="text-small font-medium text-gray-700">
+        <div className="flex justify-between items-center mb-3">
+          <span className="text-small font-semibold text-gray-700">
             {label || 'Progress'}
           </span>
-          <span className="text-small font-semibold text-gray-900">
+          <span className="text-small font-bold" style={{ color: 'var(--focus-purple)' }}>
             {Math.round(clampedProgress)}%
           </span>
         </div>
@@ -80,8 +80,8 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
           initial={{ width: 0 }}
           animate={{ width: `${clampedProgress}%` }}
           transition={{
-            duration: 0.8,
-            ease: [0.175, 0.885, 0.32, 1.275],
+            duration: 1,
+            ease: "easeOut",
           }}
         >
           {/* Celebration particles when complete */}
@@ -95,7 +95,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
               {[...Array(6)].map((_, i) => (
                 <motion.div
                   key={i}
-                  className="absolute w-1 h-1 bg-white rounded-full"
+                  className="absolute w-2 h-2 bg-white rounded-full"
                   style={{
                     left: `${20 + i * 15}%`,
                     top: '50%',
@@ -120,27 +120,17 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
             </motion.div>
           )}
         </motion.div>
-        
-        {/* Progress ring for session variant */}
-        {variant === 'session' && (
-          <motion.div
-            className="absolute inset-0 rounded-full border-2 border-white/30"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-          />
-        )}
       </div>
       
       {/* Completion celebration */}
       {isComplete && (
         <motion.div
-          className="mt-2 text-center"
+          className="mt-3 text-center"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5 }}
         >
-          <span className="text-small font-medium text-green-600">
+          <span className="text-body font-bold" style={{ color: 'var(--community-teal)' }}>
             🎉 Complete!
           </span>
         </motion.div>
@@ -166,22 +156,22 @@ export const ProgressGarden: React.FC<ProgressGardenProps> = ({ days, className 
     }
   };
 
-  const getColor = (day: string) => {
+  const getStyles = (day: string) => {
     switch (day) {
-      case 'seed': return 'text-gray-400';
-      case 'sprout': return 'text-community-teal';
-      case 'bloom': return 'text-dopamine-yellow';
+      case 'seed': return 'text-gray-400 hover:scale-110';
+      case 'sprout': return 'hover:scale-110';
+      case 'bloom': return 'animate-bounce-gentle hover:scale-110';
       case 'empty': return 'text-gray-200';
       default: return 'text-gray-200';
     }
   };
 
   return (
-    <div className={clsx('flex gap-1', className)}>
+    <div className={clsx('flex gap-2 justify-center', className)}>
       {days.map((day, index) => (
         <motion.div
           key={index}
-          className={clsx('text-2xl', getColor(day))}
+          className={clsx('text-3xl cursor-pointer transition-transform duration-200', getStyles(day))}
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{
@@ -190,7 +180,8 @@ export const ProgressGarden: React.FC<ProgressGardenProps> = ({ days, className 
             stiffness: 200,
             damping: 20
           }}
-          whileHover={{ scale: 1.2 }}
+          whileHover={{ scale: 1.15 }}
+          whileTap={{ scale: 0.95 }}
         >
           {getEmoji(day)}
         </motion.div>

@@ -29,32 +29,30 @@ const Button: React.FC<ButtonProps> = ({
   'aria-label': ariaLabel,
   'aria-describedby': ariaDescribedby,
 }) => {
-  const baseClasses = 'btn inline-flex items-center justify-center font-medium transition-all duration-150 ease-out border-none outline-none relative overflow-hidden focus:outline-2 focus:outline-offset-2 focus:outline-focus-purple';
+  const baseClasses = 'btn';
   
   const variantClasses = {
     primary: 'btn-primary',
     coral: 'btn-coral',
     teal: 'btn-teal',
     celebration: 'btn-celebration',
-    secondary: 'bg-gray-100 text-gray-900 hover:bg-gray-200 border border-gray-300',
-    ghost: 'bg-transparent text-focus-purple hover:bg-focus-purple/10 border border-transparent',
+    secondary: 'btn-secondary',
+    ghost: 'btn-ghost',
   };
 
   const sizeClasses = {
-    sm: 'px-3 py-2 text-sm min-h-[36px]',
-    md: 'px-6 py-3 text-base min-h-[44px]',
-    lg: 'px-8 py-4 text-lg min-h-[52px]',
+    sm: 'btn-sm',
+    md: '',
+    lg: 'btn-lg',
   };
 
   const widthClasses = fullWidth ? 'w-full' : '';
-  const disabledClasses = disabled ? 'opacity-50 cursor-not-allowed' : 'hover:transform hover:-translate-y-0.5 active:translate-y-0';
 
   const classes = clsx(
     baseClasses,
     variantClasses[variant],
     sizeClasses[size],
     widthClasses,
-    disabledClasses,
     className
   );
 
@@ -86,11 +84,11 @@ const Button: React.FC<ButtonProps> = ({
     >
       {loading && (
         <motion.div
-          className="mr-2"
+          className="mr-2 flex items-center justify-center"
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
         >
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24">
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24">
             <circle
               className="opacity-25"
               cx="12"
