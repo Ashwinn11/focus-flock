@@ -70,7 +70,7 @@ const Card: React.FC<CardProps> = ({
       role={onClick ? 'button' : undefined}
       tabIndex={onClick ? 0 : undefined}
       aria-label={ariaLabel}
-      aria-describedby={ariaDescribedBy}
+      aria-describedby={ariaDescribedby}
       {...motionProps}
     >
       {children}
